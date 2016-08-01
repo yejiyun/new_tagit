@@ -1,0 +1,12 @@
+# Project Settings
+.classpath
+.project
+.settings
+.springBeans
+/bin/
+
+# Mac Settings
+.DS_Store
+
+# deploy
+target/
