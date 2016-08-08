@@ -1,4 +1,4 @@
-package com.nexters.tagit;
+package com.nexters.tagit.controller;
 
 import java.text.DateFormat;
 import java.util.Date;

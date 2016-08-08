@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+             "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+             
+<mapper namespace="User">
+	
+	<!-- User 테이블에서 유저정보를 가져옴 기본 select문 -->
+    <select id="selectAll" resultType = "com.nexters.tagit.model.UserModel">
+    	SELECT * FROM User
+    </select>
+    
+    <select id="selectById" resultType = "com.nexters.tagit.model.UserModel">
+    	SELECT * FROM User
+    	WHERE ID = #{id}
+    </select>
+    
+    <insert id="insertUser">
+    	INSERT INTO User
+    	values(#{id},#{name},#{token})
+    </insert>
+
+</mapper>
