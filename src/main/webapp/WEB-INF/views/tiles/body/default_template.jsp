@@ -7,6 +7,8 @@
 <tiles:insertAttribute name="include" />
 </head>
 <body>
+	<header id="header"> <tiles:insertAttribute name="header" /> </header>
 	<tiles:insertAttribute name="article" />
+	<footer id="footer"> <tiles:insertAttribute name="footer" /> </footer>
 </body>
 </html>
