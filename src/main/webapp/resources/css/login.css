@@ -1,0 +1,83 @@
+@import url('reset.css');
+
+* {
+    font-size: 13pt;
+}
+
+body {
+    background-color: #c7c7c7;
+}
+
+header { height:4em; }
+
+article {
+    width: 100%;
+    height: calc(100% - 11.6em);
+    position: relative;
+}
+
+article .wrap.center {
+    width:100%;
+    position: absolute;
+    text-align: center;
+}
+
+article .wrap.center .img_logo,
+article .wrap.center .txt_intro {
+    max-width: 360px;
+    margin: 0 auto;
+    color:rgba(255, 255, 255, 0.6);
+}
+article .wrap.center .img_logo {
+    width: 70%;
+}
+article .wrap.center .txt_intro {
+    padding:1em 0 1em 0;
+    width: 60%;
+    line-height:1.5em;
+    font-size:0.9em;
+}
+
+article .wrap.center .img_logo img.main {
+    width: 100%;
+}
+
+article .wrap.center .bg_icon {
+    width:15%;
+    min-width:35px;
+    max-width:100px;
+}
+article .wrap.center .bg_01,
+article .wrap.center .bg_03 {
+    float:left;
+}
+article .wrap.center .bg_02,
+article .wrap.center .bg_04 {
+    float:right;
+}
+article .wrap.center .bg_01,
+article .wrap.center .bg_02 {
+    margin-bottom:1em;
+}
+article .wrap.center .bg_03,
+article .wrap.center .bg_04 {
+    margin-top:1em;
+}
+article .wrap.center .bg_01 { margin-left:3ex; margin-top:0.5ex; }
+article .wrap.center .bg_02 { margin-right:3ex; margin-bottom:0.5ex; }
+
+footer {
+    text-align:center;
+    padding:2.5em 0 2.5em 0;
+}
+footer #login_btn {
+    border: 0;
+    color:#FFFFFF;
+    background-color: #59a5e8;
+    padding:1em 8ex 1em 8ex;
+    font-size:0.8em;
+    border-radius:3em;
+    min-width:223px;
+    max-width:300px;
+    width:50%;
+}

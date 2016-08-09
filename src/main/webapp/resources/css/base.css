@@ -1,0 +1,7 @@
+@charset "UTF-8";
+@import url('reset.css');
+
+* {
+    font-size: 13pt;
+    box-sizing:border-box;
+}
