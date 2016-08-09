@@ -6,14 +6,14 @@
 <tiles-definitions>
 	<!-- default : 템플릿에 설정된 페이지의 구성 요소에 대한 실제 파일을 지정합니다. -->
 	<definition name="default" template="/WEB-INF/views/tiles/body/default_template.jsp">
+		<put-attribute name="include" value="/WEB-INF/views/tiles/common/include.jsp" />
 		<put-attribute name="header" value="/WEB-INF/views/tiles/common/header.jsp" />
-		<put-attribute name="menu" value="/WEB-INF/views/tiles/common/menu.jsp" />
-		<put-attribute name="body" value="/WEB-INF/views/tiles/body/body.jsp" />
+		<put-attribute name="article" value="/WEB-INF/views/tiles/body/article.jsp" />
 		<put-attribute name="footer" value="/WEB-INF/views/tiles/common/footer.jsp" />
 	</definition>
 	
 	<definition name="tiles/*" extends="default">
-		<put-attribute name="body" value="/WEB-INF/views/tiles/body/{1}.jsp"/>
+		<put-attribute name="article" value="/WEB-INF/views/tiles/body/{1}.jsp"/>
 	</definition>
 	
 </tiles-definitions>

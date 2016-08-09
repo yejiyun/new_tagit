@@ -15,12 +15,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * Handles requests for the application home page.
  */
 @Controller
-public class IndexController {
+@RequestMapping(value = "/login", method = RequestMethod.GET)
+public class LoginController {	
+	private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
 	
-	private static final Logger logger = LoggerFactory.getLogger(IndexController.class);
-	
-	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String mainTiles(Locale locale, Model model) {
-		return "tiles/main";
+	@RequestMapping(value = "", method = RequestMethod.GET)
+	public String loginPage(Locale locale, Model model) {		
+		return "login";
 	}
 }
