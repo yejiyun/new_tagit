@@ -1,0 +1,234 @@
+@import url('base.css');
+article#list {
+  background-color: #FFFFFF;
+}
+article#list .cards {
+  position: relative;
+  width: 100%;
+  font-size: 0;
+}
+article#list .cards .card {
+  font-size: 1rem;
+  display: inline-block;
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: calc(100% - 2vw);
+  position: relative;
+  margin: 1vw;
+  height: 124vw;
+}
+article#list .cards .card:first-child {
+  margin-top: 0;
+}
+article#list .cards .card .detail {
+  background-image: url(../images/icon/memo.png);
+  background-size: 100%;
+  position: absolute;
+  width: 15vw;
+  height: 15vw;
+  top: 5vw;
+  right: 5vw;
+}
+article#list .cards .card .wrap {
+  width: 100%;
+  height: 100%;
+  padding: 0 16% 0 16%;
+  background-size: 100% auto;
+  background-image: url(../images/gradation/listcard_gradation.png);
+  background-position: center bottom;
+  background-repeat: no-repeat;
+}
+article#list .cards .card .wrap .video {
+  display: none;
+  position: absolute;
+  width: 68%;
+  height: 100%;
+  background-size: 40vw 40vw;
+  background-image: url(../images/icon/play.png);
+  background-repeat: no-repeat;
+  background-position: center calc(40%);
+}
+article#list .cards .card .wrap .bottom {
+  position: absolute;
+  bottom: 0;
+  width: 68%;
+}
+article#list .cards .card .wrap .bottom .contents {
+  width: 100%;
+  height: 4.5ex;
+  color: #FFFFFF;
+  line-height: 1.2em;
+  font-size: 6vw;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+article#list .cards .card .wrap .bottom .tags {
+  font-size: 6vw;
+  height: 1em;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: center;
+  margin: 7vw 0 7vw 0;
+}
+article#list .cards .card .wrap .bottom .tags span {
+  color: #FFFFFF;
+}
+article#list .cards .card.text .contents {
+  height: auto !important;
+  max-height: 11.6em;
+}
+article#list .cards .card.video .video {
+  display: block;
+}
+article#list .cards.layout_02 .card {
+  width: calc(50% - 0.5vw);
+  margin: 0.5vw;
+  height: 58vw;
+}
+article#list .cards.layout_02 .card:nth-child(1),
+article#list .cards.layout_02 .card:nth-child(2) {
+  margin-top: 0;
+}
+article#list .cards.layout_02 .card:nth-child(2n) {
+  margin-right: 0;
+}
+article#list .cards.layout_02 .card:nth-child(2n - 1) {
+  margin-left: 0;
+}
+article#list .cards.layout_02 .card .detail {
+  width: 8vw;
+  height: 8vw;
+  top: 2vw;
+  right: 2vw;
+}
+article#list .cards.layout_02 .card .wrap .video {
+  background-size: 18vw 18vw;
+  background-position: center calc(40%);
+}
+article#list .cards.layout_02 .card .wrap .bottom .contents {
+  font-size: 3.5vw;
+}
+article#list .cards.layout_02 .card .wrap .bottom .tags {
+  font-size: 3vw;
+  text-align: center;
+  margin: 3vw 0 3.1vw 0;
+}
+article#list .cards.layout_02 .card .wrap .bottom .tags span {
+  color: #FFFFFF;
+}
+article#list .cards.layout_03 .card {
+  width: calc(calc(100% / 3) - 0.7vw);
+  margin: 0.5vw;
+  height: 42vw;
+}
+article#list .cards.layout_03 .card:nth-child(1),
+article#list .cards.layout_03 .card:nth-child(2),
+article#list .cards.layout_03 .card:nth-child(3) {
+  margin-top: 0;
+}
+article#list .cards.layout_03 .card:nth-child(3n) {
+  margin-right: 0;
+}
+article#list .cards.layout_03 .card:nth-child(3n + 1) {
+  margin-left: 0;
+}
+article#list .cards.layout_03 .card .detail {
+  width: 5vw;
+  height: 5vw;
+  top: 1.5vw;
+  right: 1.5vw;
+}
+article#list .cards.layout_03 .card .wrap .video {
+  background-size: 12vw 12vw;
+  background-position: center calc(45%);
+}
+article#list .cards.layout_03 .card .wrap .bottom .contents {
+  font-size: 2vw;
+}
+article#list .cards.layout_03 .card .wrap .bottom .tags {
+  font-size: 2vw;
+  text-align: center;
+  margin: 2vw 0 2.1vw 0;
+}
+article#list .cards.layout_03 .card .wrap .bottom .tags span {
+  color: #FFFFFF;
+}
+article#list .cards.layout_04 .card {
+  width: calc(25% - 0.6vw);
+  margin: 0.4vw;
+  height: 32vw;
+}
+article#list .cards.layout_04 .card:nth-child(1),
+article#list .cards.layout_04 .card:nth-child(2),
+article#list .cards.layout_04 .card:nth-child(3),
+article#list .cards.layout_04 .card:nth-child(4) {
+  margin-top: 0;
+}
+article#list .cards.layout_04 .card:nth-child(4n) {
+  margin-right: 0;
+}
+article#list .cards.layout_04 .card:nth-child(4n + 1) {
+  margin-left: 0;
+}
+article#list .cards.layout_04 .card .detail {
+  width: 4vw;
+  height: 4vw;
+  top: 1.5vw;
+  right: 1.5vw;
+}
+article#list .cards.layout_04 .card .wrap .video {
+  background-size: 9vw 9vw;
+  background-position: center calc(42%);
+}
+article#list .cards.layout_04 .card .wrap .bottom .contents {
+  font-size: 1.5vw;
+}
+article#list .cards.layout_04 .card .wrap .bottom .tags {
+  font-size: 1.5vw;
+  text-align: center;
+  margin: 1.5vw 0 1.6vw 0;
+}
+article#list .cards.layout_04 .card .wrap .bottom .tags span {
+  color: #FFFFFF;
+}
+article#list .cards.layout_05 .card {
+  width: calc(20% - 0.8vw);
+  margin: 0.5vw;
+  height: 24vw;
+}
+article#list .cards.layout_05 .card:nth-child(1),
+article#list .cards.layout_05 .card:nth-child(2),
+article#list .cards.layout_05 .card:nth-child(3),
+article#list .cards.layout_05 .card:nth-child(4),
+article#list .cards.layout_05 .card:nth-child(5) {
+  margin-top: 0;
+}
+article#list .cards.layout_05 .card:nth-child(5n) {
+  margin-right: 0;
+}
+article#list .cards.layout_05 .card:nth-child(5n + 1) {
+  margin-left: 0;
+}
+article#list .cards.layout_05 .card .detail {
+  width: 3vw;
+  height: 3vw;
+  top: 1vw;
+  right: 1vw;
+}
+article#list .cards.layout_05 .card .wrap .video {
+  background-size: 7vw 7vw;
+  background-position: center calc(42%);
+}
+article#list .cards.layout_05 .card .wrap .bottom .contents {
+  font-size: 1.3vw;
+}
+article#list .cards.layout_05 .card .wrap .bottom .tags {
+  font-size: 1.4vw;
+  text-align: center;
+  margin: 1.4vw 0 1.5vw 0;
+}
+article#list .cards.layout_05 .card .wrap .bottom .tags span {
+  color: #FFFFFF;
+}
