@@ -8,7 +8,15 @@
 </head>
 <body>
 	<header id="header"> <tiles:insertAttribute name="header" /> </header>
+	<nav><tiles:insertAttribute name="nav"/></nav>
 	<tiles:insertAttribute name="article" />
 	<footer id="footer"> <tiles:insertAttribute name="footer" /> </footer>
+	
+	<script>
+        var mySwiper = new Swiper('.swiper-container',{
+            slidesPerView: 4,
+            spaceBetween: 7
+        });
+        </script>
 </body>
 </html>

@@ -8,6 +8,6 @@
     box-sizing:border-box;
 }
 
-article.tiles { width:100%; }
-aside { display:none; z-index:10; }
+article.tiles { width:100%; padding-top:50px; }
+aside { display:none; z-index:100; }
 aside.show { display:block; }

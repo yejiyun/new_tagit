@@ -357,6 +357,7 @@ article#list.detail {
   position: absolute;
   top: 0;
   height: 100%;
+  padding:0;
 }
 article#list.detail > .wrap {
   padding: 0;
@@ -376,7 +377,7 @@ article#list.detail .card_detail .header {
   left: 0;
   text-align: center;
   background-color: rgba(0, 0, 0, 0.8);
-  z-index: 3;
+  z-index: 50;
 }
 article#list.detail .card_detail .header .wrap {
   position: relative;
@@ -387,6 +388,7 @@ article#list.detail .card_detail .header .wrap .btn_back {
   width: 3em;
   height: 3em;
   padding: 1em;
+  cursor:pointer;
 }
 article#list.detail .card_detail .header .wrap .btn_back img {
   height: 100%;
@@ -402,6 +404,9 @@ article#list.detail .card_detail .article {
   width: 100%;
   padding-top: 3em;
   height: calc(100% - 3em);
+  position:relative;
+  z-index:49;
+  background-color:#000000;
 }
 article#list.detail .card_detail .article .image {
   width: 100%;
@@ -470,6 +475,11 @@ aside#detail_edit {
   height: 100%;
   background-color: rgba(0, 0, 0, 0.8);
 }
+aside#detail_edit.keyboard .thumbnail {
+  overflow: hidden;
+  height: 0 !important;
+  transition-duration: 0.3s;
+}
 aside#detail_edit .wrap {
   width: 100%;
   height: 100%;
@@ -490,6 +500,8 @@ aside#detail_edit .wrap {
   aside#detail_edit .wrap .article .thumbnail {
     font-size: 0;
     height: 60vw;
+    padding:0;
+    border-radius:0;
   }
   aside#detail_edit .wrap .article .thumbnail .image {
     position: relative;
@@ -597,6 +609,7 @@ aside#detail_edit .wrap {
   aside#detail_edit .wrap .article .thumbnail {
     font-size: 0;
     height: 30rem;
+    padding:0;
   }
   aside#detail_edit .wrap .article .thumbnail .image {
     font-size: 1rem;

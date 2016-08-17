@@ -1,102 +1,145 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <link rel="stylesheet" href="/resources/css/main.css">
 <article id="main" class="tiles">
-    <section class="tag_bundle">
-        <header>
-            <img src="/resources/images/icon/get_memo_sharp.png"/>
-            <span>고양이</span>
-        </header>
-        <article class="items layout_01">
-            <div class="item" style="background-image:url(/resources/images/sample/cat_01.png);">
-                <div class="memo"></div>
-                <div class="contents"></div>
-            </div>
-        </article>
-    </section>
-    <section class="tag_bundle">
-        <header>
-            <img src="/resources/images/icon/get_memo_sharp.png"/>
-            <span>고양이</span>
-        </header>
-        <article class="items layout_02">
-            <div class="item" style="background-image:url(/resources/images/sample/cat_01.png);">
-                <div class="memo"></div>
-                <div class="contents"></div>
-            </div>
-            <div class="item" style="background-image:url(/resources/images/sample/cat_02.png);">
-                <div class="memo"></div>
-                <div class="contents">
+<div class="wrap">
+        <section class="tag_bundle">
+            <header>
+                <img src="resources/images/icon/get_memo_sharp.png"/>
+                <span>고양이</span>
+            </header>
+            <article class="items layout_01">
+                <div class="item" style="background-image:url(resources/images/sample/cat_01.png);">
+                    <div class="memo"></div>
+                    <div class="contents"></div>
+                </div>
+            </article>
+        </section>
+        <section class="tag_bundle">
+            <header>
+                <img src="resources/images/icon/get_memo_sharp.png"/>
+                <span>고양이</span>
+            </header>
+            <article class="items layout_02">
+                <div class="item" style="background-image:url(resources/images/sample/cat_01.png);">
+                    <div class="memo"></div>
+                    <div class="contents"></div>
+                </div>
+                <div class="item" style="background-image:url(resources/images/sample/cat_02.png);">
+                    <div class="memo"></div>
+                    <div class="contents">
                     <pre>
                         강아지는 멍멍하고 짖는다.
                         왜냐하면
                         강아지이기 때문이다.
                         사실 강아지는
-                        야옹할수 없는 신체구조 이다.
+                        멍 야옹할수 없는 신체구조 이다.
                     </pre>
+                    </div>
                 </div>
-            </div>
-        </article>
-    </section>
-    <section class="tag_bundle">
-        <header>
-            <img src="/resources/images/icon/get_memo_sharp.png"/>
-            <span>고양이</span>
-        </header>
-        <article class="items layout_03">
-            <div class="item" style="background-image:url(/resources/images/sample/cat_01.png);">
-                <div class="memo"></div>
-                <div class="contents"></div>
-            </div>
-            <div class="item" style="background-image:url(/resources/images/sample/cat_02.png);">
-                <div class="memo"></div>
-                <div class="contents">
+            </article>
+        </section>
+        <section class="tag_bundle">
+            <header>
+                <img src="resources/images/icon/get_memo_sharp.png"/>
+                <span>고양이</span>
+            </header>
+            <article class="items layout_03">
+                <div class="item" style="background-image:url(resources/images/sample/cat_01.png);">
+                    <div class="memo"></div>
+                    <div class="contents"></div>
+                </div>
+                <div class="item" style="background-image:url(resources/images/sample/cat_02.png);">
+                    <div class="memo"></div>
+                    <div class="contents">
                     <pre>
                         강아지는 멍멍하고 짖는다.
                         왜냐하면
                         강아지이기 때문이다.
                         사실 강아지는
-                        야옹할수 없는 신체구조 이다.
+                        멍 야옹할수 없는 신체구조 이다.
                     </pre>
+                    </div>
                 </div>
-            </div>
-            <div class="item" style="background-image:url(/resources/images/sample/cat_03.png);">
-                <div class="memo"></div>
-                <div class="contents"></div>
-            </div>
-        </article>
-    </section>
-    <section class="tag_bundle">
-        <header>
-            <img src="/resources/images/icon/get_memo_sharp.png"/>
-            <span>고양이</span>
-        </header>
-        <article class="items layout_04">
-            <div class="item" style="background-image:url(/resources/images/sample/cat_01.png);">
-                <div class="memo"></div>
-                <div class="contents"></div>
-            </div>
-            <div class="item" style="background-image:url(/resources/images/sample/cat_02.png);">
-                <div class="memo"></div>
-                <div class="contents">
+                <div class="item" style="background-image:url(resources/images/sample/cat_03.png);">
+                    <div class="memo"></div>
+                    <div class="contents"></div>
+                </div>
+            </article>
+        </section>
+        <section class="tag_bundle">
+            <header>
+                <img src="resources/images/icon/get_memo_sharp.png"/>
+                <span>고양이</span>
+            </header>
+            <article class="items layout_04">
+                <div class="item" style="background-image:url(resources/images/sample/cat_01.png);">
+                    <div class="memo"></div>
+                    <div class="contents"></div>
+                </div>
+                <div class="item" style="background-image:url(resources/images/sample/cat_02.png);">
+                    <div class="memo"></div>
+                    <div class="contents">
                     <pre>
                         강아지는 멍멍하고 짖는다.
                         왜냐하면
                         강아지이기 때문이다.
                         사실 강아지는
-                        야옹할수 없는 신체구조 이다.
+                        멍 야옹할수 없는 신체구조 이다.
                     </pre>
+                    </div>
+                </div>
+                <div class="item" style="background-image:url(resources/images/sample/cat_03.png);">
+                    <div class="memo"></div>
+                    <div class="contents"></div>
+                </div>
+                <div class="item" style="background-image:url(resources/images/sample/cat_04.png);">
+                    <div class="memo"></div>
+                    <div class="contents"></div>
+                </div>
+            </article>
+        </section>
+    </div>
+    <div class="card_detail">
+        <div class="header">
+            <div class="wrap">
+                <div class="btn_back">
+                    <img src="resources/images/icon/arrow_left.png">
+                </div>
+                <div class="page">1/8</div>
+            </div>
+        </div>
+        <div class="article ">
+            <div class="image">
+                <img src="resources/images/sample/long_cat.jpg">
+            </div>
+            <div class="content">
+                <div class="wrap">
+                    <div class="wrap">
+                        멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹
+                        멍 야옹
+                        멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹
+                        멍 야옹
+                        멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹
+                        멍 야옹
+                        멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹
+                        멍 야옹
+                        멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹
+                        멍 야옹
+                        멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹
+                        멍 야옹
+                        멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹
+                        멍 야옹
+                        멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹
+                        멍 야옹
+                        멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹
+                        멍 야옹
+                        멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹
+                        멍 야옹
+                    </div>
                 </div>
             </div>
-            <div class="item" style="background-image:url(/resources/images/sample/cat_03.png);">
-                <div class="memo"></div>
-                <div class="contents"></div>
-            </div>
-            <div class="item" style="background-image:url(/resources/images/sample/cat_04.png);">
-                <div class="memo"></div>
-                <div class="contents"></div>
-            </div>
-        </article>
-    </section>
+        </div>
+    </div>
 </article>
 <aside id="get">
     <div class="wrap">

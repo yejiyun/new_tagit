@@ -56,6 +56,8 @@ article#main .wrap section.tag_bundle article.items .item .contents pre {
   white-space: pre-line;
   overflow: hidden;
   text-overflow: ellipsis;
+  background-color: transparent;
+  color: #FFFFFF;
 }
 article#main .wrap section.tag_bundle article.items.layout_01 .item {
   width: 100%;
@@ -234,6 +236,11 @@ aside#get {
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.8);
+}
+aside#get.keyboard .thumbnail {
+  overflow: hidden;
+  height: 0 !important;
+  transition-duration: 0.3s;
 }
 aside#get .wrap {
   width: 100%;

@@ -8,6 +8,7 @@
 	<definition name="default" template="/WEB-INF/views/tiles/body/default_template.jsp">
 		<put-attribute name="include" value="/WEB-INF/views/tiles/common/include.jsp" />
 		<put-attribute name="header" value="/WEB-INF/views/tiles/common/header.jsp" />
+		<put-attribute name="nav" value="/WEB-INF/views/tiles/common/nav.jsp" />
 		<put-attribute name="article" value="/WEB-INF/views/tiles/body/article.jsp" />
 		<put-attribute name="footer" value="/WEB-INF/views/tiles/common/footer.jsp" />
 	</definition>
