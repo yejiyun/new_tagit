@@ -21,6 +21,6 @@ public class IndexController {
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String mainTiles(Locale locale, Model model) {
-		return "tiles/list";
+		return "tiles/main";
 	}
 }
