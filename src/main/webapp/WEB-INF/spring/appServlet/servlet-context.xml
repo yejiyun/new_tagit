@@ -37,8 +37,4 @@
 		</beans:property>
 	</beans:bean>
 	
-	<context:component-scan base-package="com.nexters.tagit" />
-	
-	
-	
 </beans:beans>
