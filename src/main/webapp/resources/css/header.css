@@ -1,0 +1,166 @@
+@charset "UTF-8";
+
+@import url('base.css');
+
+header#header {
+	
+}
+
+.container {
+	width: 600px;
+	margin: 50px auto;
+}
+
+.fixed_header {
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index:40;
+	width: 100%;
+	height: 50px;
+	background-color: #ffffff;
+	box-shadow: 0px 9px 24px 0 rgba(0, 0, 0, 0.05);
+	border: solid 1px #ebebeb;
+	text-align: center;
+	overflow: hidden;
+}
+
+#top_logo {
+	width: 50px;
+	height: 35px;
+	margin-top: 7px;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+#get {
+	cursor:pointer;
+	width: 20px;
+	height: 20px;
+	margin: 15px;
+	vertical-align: middle;
+	float: left;
+}
+
+#tags {
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	-webkit-text-size-adjust: 100%;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	width: 100px;
+	margin: 15px auto;
+	margin-left: 50px;
+	font-size: 14px;
+	background: #f9f9f9;
+	color: #333;
+}
+
+#search {
+	cursor:pointer;
+	background: #ffffff;
+	width: 20px;
+	height: 20px;
+	margin: 15px;
+	float: right;
+	vertical-align: middle;
+}
+
+/* .searchbox-submit{
+    width:50px;
+    height:50px;
+    display:block;
+    position:relative;
+    top:0;
+    font-family:verdana;
+    font-size:22px;
+    right:0;
+    padding:0;
+    margin:0;
+    border:0;
+    outline:0;
+    line-height:50px;
+    text-align:center;
+    cursor:pointer;
+    color:#dcddd8;
+} */
+.wrapper {
+	width: 90%;
+	max-width: 1100px;
+	min-width: 800px;
+	margin: 50px auto;
+}
+
+header#header:not(.open) ~ nav {
+	height: 0;
+}
+
+header#header:not(.open) ~ nav .swiper-container {
+	padding: 0;
+}
+
+header#header:not(.open) .tokenizer {
+	width: 0 !important;
+	border: 0;
+	padding: 0;
+}
+
+header#header:not(.open) .span4 {
+	display: none;
+}
+
+header#header.open ~ nav ~ article {
+	transition-duration:0.5s;
+	padding-top:90px;
+}
+
+header#header.open .fixed_header {
+	padding-left: 1vw;
+	text-align: left;
+}
+
+header#header.open #get {
+	display: none;
+}
+
+header#header.open #top_logo {
+	margin-top: 0;
+}
+
+header#header.open .span4 {
+	border: 0;
+	box-shadow: none;
+}
+
+header#header.open .tokenizer {
+	transition-duration: 0.6s;
+	position: relative;
+	display: inline-block;
+	vertical-align: middle;
+	overflow: hidden;
+	width: calc(100% - 121px) !important;
+	height: 30px;
+	margin-top: 10px;
+	margin-left: 15px;
+	background: #ffffff;
+	border: 0;
+	border-bottom: 1px solid #ddd;
+	padding: 5px;
+}
+
+header#header.open .tokenizer ul {
+	display: block;
+	text-align: left;
+}
+
+header#header.open .tokenizer .label {
+	background: #4b4b4b;
+	color: #fff;
+	border-radius: 20px;
+	padding: 0 1ex 0 1ex;
+	height: 100%;
+}
+
+header#header.open .tokenizer .label i {
+	width: 0;
+	height: 0;
+}
