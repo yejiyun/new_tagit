@@ -12,8 +12,8 @@
 <script src="/resources/js/prefixfree.min.js"></script>
 <script src="/resources/js/bootstrap-tokenizer.js"></script>
 <script src="/resources/js/lib/swiper.jquery.min.js"></script>
-<script type="text/javascript"
-	src="http://connect.facebook.net/en_US/sdk.js"></script>
+<script type="text/javascript" src="http://connect.facebook.net/en_US/sdk.js"></script>
+<script type="text/javascript" src="resources/js/search.js"></script>
 <script>
 $(function(){
 	
@@ -26,6 +26,8 @@ $(function(){
 	$("#logout").click(function(){
 		ckFB();
 	});
+	
+	search.init();
 })
 </script>
 <!--  <script type="text/javascript" src="http://localhost:8000/tagit/resources/js/facebook/login.js"></script>-->
