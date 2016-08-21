@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+             "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+             
+<mapper namespace="com.nexters.tagit.mapper.TagMapper">
+	<select id="selectTagListByItemId" parameterType="int" resultType="com.nexters.tagit.model.TagModel">
+		SELECT
+			t.id AS id,
+			t.content AS content,
+			t.create_time AS createTime,
+			t.edit_time AS editTime
+		FROM
+			tag t, (SELECT tag_id FROM item_tag WHERE item_id = #{itemId}) it
+		WHERE
+			t.id = it.tag_id
+	</select>
+	
+	<select id="selectLatestTagList" resultType="com.nexters.tagit.model.TagModel">
+		SELECT
+			id AS id,
+			content AS content,
+			create_time AS createTime,
+			edit_time AS editTime
+		FROM
+			tag
+		ORDER BY edit_time DESC
+		LIMIT 7
+	</select>
+	
+	<update id="updateTagEditTime" parameterType="string">
+		UPDATE
+			tag
+		SET
+			edit_time = NOW()
+		WHERE
+			id = #{tagId}
+	</update> 
+</mapper>
