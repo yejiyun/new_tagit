@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
              "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
              
-<mapper namespace="User">
+<mapper namespace="com.nexters.tagit.mapper.UserMapper">
 	
 	<!-- User 테이블에서 유저정보를 가져옴 기본 select문 -->
     <select id="selectAll" resultType = "com.nexters.tagit.model.UserModel">
@@ -11,12 +11,12 @@
     
     <select id="selectById" resultType = "com.nexters.tagit.model.UserModel">
     	SELECT * FROM User
-    	WHERE ID = #{id}
+    	WHERE user_id = #{user_id}
     </select>
     
     <insert id="insertUser">
     	INSERT INTO User
-    	values(#{id},#{name},#{token})
+    	values(#{user_id},#{ide_num})
     </insert>
 
 </mapper>
