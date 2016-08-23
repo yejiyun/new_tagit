@@ -84,7 +84,7 @@ div.tokenizer ul li .input {
 }
 
 div.tokenizer li span {
-  vertical-align: top !important;
+  vertical-align: middle !important;
 }
 
 div.tokenizer li .label > i {

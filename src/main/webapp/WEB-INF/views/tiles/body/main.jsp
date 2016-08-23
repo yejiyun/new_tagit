@@ -141,7 +141,7 @@
         </div>
     </div>
 </article>
-<aside id="get">
+<aside id="get" class="show">
     <div class="wrap">
         <div class="header">
             <img class="btn_close" src="/resources/images/icon/x.png">
@@ -160,11 +160,13 @@
                 <div class="head">
                     <img src="/resources/images/icon/get_memo_sharp.png">
                 </div>
-                <div class="body"></div>
+                <div class="body">
+                	<input class="txt_tags" type="text" placeholder = "태그를 입력하세요." data-provide="tokenizer" value=""> 
+                </div>
             </div>
             <div class="memo">
                 <div class="head">
-                    <img src="/resources/images/icon/get_memo_sharp.png">
+                    <img src="/resources/images/icon/memo.png">
                 </div>
                 <div class="body">
                     <textarea class="txt_memo" placeholder="메모를 입력하세요." onKeyPress="javascript: if (event.keyCode==13) return false;" maxlength="60"></textarea>

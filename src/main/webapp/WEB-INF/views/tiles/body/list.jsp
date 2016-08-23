@@ -5,9 +5,7 @@
 <link rel="stylesheet" href="/resources/css/list.css">
 <article id="list" class="tiles">
     <section class="cards layout_02">
-    	<c:forEach var="item" items="${result}" varStatus="loop">
-    		
-    
+    	<c:forEach var="item" items="${result}" varStatus="loop">    
         <div class="card" style="background-image:url(resources/images/sample/cat_01.png);">
             <div class="wrap delete">
                 <div class="center">
@@ -261,7 +259,9 @@
                 <div class="head">
                     <img src="resources/images/icon/get_memo_sharp.png">
                 </div>
-                <div class="body"></div>
+                <div class="body">
+                	<input class="txt_tags" type="text" placeholder = "태그를 입력하세요." data-provide="tokenizer" value=""> 
+                </div>
             </div>
             <div class="memo">
                 <div class="head">
