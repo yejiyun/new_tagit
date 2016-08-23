@@ -12,11 +12,3 @@
 		class="span4" type="text" data-provide="tokenizer" value=""> <img
 		id="search" src="/resources/images/icon/search.png">
 </div>
-
-<script>
-     $(document).ready(function(){
-    	$("#search").click(function(){
-    	$("#header").attr('class', 'open');	
-     });
-    });
-    </script>

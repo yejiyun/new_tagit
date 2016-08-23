@@ -5,14 +5,5 @@
 <script src="/resources/js/bootstrap-tokenizer.js"></script>
 
 <div class = "swiper-container">
-
-    <div class = "swiper-wrapper">
-        <div class = "swiper-slide">#가나다라마바사</div>
-        <div class = "swiper-slide">#가나다라마바사</div>
-        <div class = "swiper-slide">#가나다라마바사</div>
-        <div class = "swiper-slide">#가나다라마바사</div>
-        <div class = "swiper-slide">#가나다라마바사</div>
-        <div class = "swiper-slide">#가나다라마바사</div>
-        <div class = "swiper-slide">#가나다라마바사</div>
-    </div>
+    <div class = "swiper-wrapper" />
 </div>
