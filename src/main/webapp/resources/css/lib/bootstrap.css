@@ -2282,7 +2282,6 @@ table th[class*="span"],
   *margin-right: .3em;
   line-height: 14px;
   vertical-align: text-top;
-  background-image: url("../img/glyphicons-halflings.png");
   background-position: 14px 14px;
   background-repeat: no-repeat;
 }
@@ -2306,7 +2305,6 @@ table th[class*="span"],
 .dropdown-submenu:focus > a > [class^="icon-"],
 .dropdown-submenu:hover > a > [class*=" icon-"],
 .dropdown-submenu:focus > a > [class*=" icon-"] {
-  background-image: url("../img/glyphicons-halflings-white.png");
 }
 
 .icon-glass {
@@ -5622,104 +5620,12 @@ a.thumbnail:focus {
 .label,
 .badge {
   display: inline-block;
-  padding: 2px 4px;
-  font-size: 11.844px;
-  font-weight: bold;
-  line-height: 14px;
+  padding: 2px 1em;
   color: #ffffff;
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
   white-space: nowrap;
-  vertical-align: baseline;
-  background-color: #999999;
-}
-
-.label {
-  -webkit-border-radius: 3px;
-     -moz-border-radius: 3px;
-          border-radius: 3px;
-}
-
-.badge {
-  padding-right: 9px;
-  padding-left: 9px;
-  -webkit-border-radius: 9px;
-     -moz-border-radius: 9px;
-          border-radius: 9px;
-}
-
-.label:empty,
-.badge:empty {
-  display: none;
-}
-
-a.label:hover,
-a.label:focus,
-a.badge:hover,
-a.badge:focus {
-  color: #ffffff;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-.label-important,
-.badge-important {
-  background-color: #b94a48;
-}
-
-.label-important[href],
-.badge-important[href] {
-  background-color: #953b39;
-}
-
-.label-warning,
-.badge-warning {
-  background-color: #f89406;
-}
-
-.label-warning[href],
-.badge-warning[href] {
-  background-color: #c67605;
-}
-
-.label-success,
-.badge-success {
-  background-color: #468847;
-}
-
-.label-success[href],
-.badge-success[href] {
-  background-color: #356635;
-}
-
-.label-info,
-.badge-info {
-  background-color: #3a87ad;
-}
-
-.label-info[href],
-.badge-info[href] {
-  background-color: #2d6987;
-}
-
-.label-inverse,
-.badge-inverse {
-  background-color: #333333;
-}
-
-.label-inverse[href],
-.badge-inverse[href] {
-  background-color: #1a1a1a;
-}
-
-.btn .label,
-.btn .badge {
-  position: relative;
-  top: -1px;
-}
-
-.btn-mini .label,
-.btn-mini .badge {
-  top: 0;
+  vertical-align: middle;
+  background-color: #4b4b4b;
+  border-radius:100vw;
 }
 
 @-webkit-keyframes progress-bar-stripes {

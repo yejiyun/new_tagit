@@ -1,3 +1,10 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%
+	Object user = session.getAttribute("session");
+	if(user != null) {
+		response.sendRedirect("/");
+	}
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,7 +13,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Tagit, Hashtag has become a part of normal language.</title>
     <link rel="stylesheet" href="/resources/css/login.css">
-    <script type="text/javascript" src="/resources/js/jquery-3.1.0.min.js"></script>
+	<script type="text/javascript" src="/resources/js/lib/jquery-1.11.1.min.js"></script>
+	<script src="/resources/js/facebook.js"></script>
     <script type="text/javascript" src="/resources/js/login.js"></script>
 </head>
 <body>

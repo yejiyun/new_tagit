@@ -56,8 +56,8 @@ article#main .wrap section.tag_bundle article.items .item .contents pre {
   white-space: pre-line;
   overflow: hidden;
   text-overflow: ellipsis;
-  background-color: transparent;
-  color: #FFFFFF;
+  background-color:transparent;
+  color:#FFFFFF;
 }
 article#main .wrap section.tag_bundle article.items.layout_01 .item {
   width: 100%;
@@ -123,6 +123,7 @@ article#main.detail {
   position: absolute;
   top: 0;
   height: 100%;
+  padding:0;
 }
 article#main.detail > .wrap {
   padding: 0;
@@ -133,6 +134,11 @@ article#main.detail .tag_bundle {
 article#main.detail .card_detail .wrap {
   padding: 0;
 }
+article#main.detail .card_detail {
+  position:relative;
+  z-index: 40;
+  background-color:#000000;
+}
 article#main.detail .card_detail .header {
   width: 100%;
   height: 3em;
@@ -142,7 +148,7 @@ article#main.detail .card_detail .header {
   left: 0;
   text-align: center;
   background-color: rgba(0, 0, 0, 0.8);
-  z-index: 3;
+  z-index: 40;
 }
 article#main.detail .card_detail .header .wrap {
   padding: 0;
@@ -262,6 +268,7 @@ aside#get .wrap {
   aside#get .wrap .article .thumbnail {
     font-size: 0;
     height: 60vw;
+    border:0;
   }
   aside#get .wrap .article .thumbnail .prev,
   aside#get .wrap .article .thumbnail .next {
@@ -314,6 +321,40 @@ aside#get .wrap {
   aside#get .wrap .article .tags {
     border-bottom: 1px solid #e8e8e8;
   }
+  aside#get .wrap .article .memo .body .txt_tags{
+    width:calc(100%-121px)!important;
+    border:0;
+  }
+  aside#get .wrap .article .memo .body .txt_tags:hover,
+  aside#get .wrap .article .memo .body .txt_tags:active {
+    outline: none;
+  }
+
+  aside#get .wrap .article .tags .body div.tokenizer {
+    position: relative;
+  	display:flex;
+  	align-items:center;
+    vertical-align: middle;
+    overflow: hidden;
+    width: 100% !important;
+    height: 100%;
+    margin:0;
+    background: #ffffff;
+    border: 0;
+    /* 	border-bottom: 1px solid #ddd; */
+    padding: 5px;
+    font-size:1rem;
+  }
+  aside#get .wrap .article .tags .body div.tokenizer .label {
+  	font-size: 4vw;
+    height: 7vw;
+	line-height: 5.5vw;
+	margin:0 0.1em 0 0.1em;
+  }
+  aside#get .wrap .article .tags .body div.tokenizer .input {
+  	font-size: 4vw;
+	height:auto;
+  }
   aside#get .wrap .article .memo .body .txt_memo {
     font-size: 4vw;
     padding: 3vw;
@@ -352,6 +393,9 @@ aside#get .wrap {
     display: inline-block;
     width: calc(100% - 13vw);
   }
+  aside#get .wrap .article .tags .body {
+    height:13vw;
+  }
   aside#get .wrap .footer {
     margin: 0 auto;
     padding: 3vw;
@@ -387,6 +431,7 @@ aside#get .wrap {
   aside#get .wrap .article .thumbnail {
     font-size: 0;
     height: 30rem;
+    border:0;
   }
   aside#get .wrap .article .thumbnail .prev,
   aside#get .wrap .article .thumbnail .next {
@@ -479,6 +524,42 @@ aside#get .wrap {
     vertical-align: top;
     display: inline-block;
     width: calc(100% - 5em);
+  }
+  aside#get .wrap .article .tags .body {
+  	height:7em;
+  }
+  aside#get .wrap .article .tags .body .txt_tags{
+    width:calc(100%-121px)!important;
+    border:0;
+  }
+  aside#get .wrap .article .tags .body .txt_tags:hover,
+  aside#get .wrap .article .tags .body .txt_tags:active {
+    outline: none;
+  }
+  aside#get .wrap .article .tags .body div.tokenizer {
+    position: relative;
+  	display:flex;
+  	align-items:center;
+    vertical-align: middle;
+    overflow: hidden;
+    width: 100% !important;
+    height: 100%;
+    margin:0;
+    background: #ffffff;
+    border: 0;
+    /* 	border-bottom: 1px solid #ddd; */
+    padding: 5px;
+    font-size:1rem;
+  }
+  aside#get .wrap .article .tags .body div.tokenizer .label {
+  	font-size: 1.6em;
+    height: 1.8em;
+    line-height: 1.6em;
+	margin:0 0.1em 0 0.1em;
+  }
+  aside#get .wrap .article .tags .body div.tokenizer .input {
+  	font-size: 1.6em;
+	height:auto;
   }
   aside#get .wrap .footer {
     margin: 0 auto;

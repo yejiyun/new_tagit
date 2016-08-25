@@ -28,4 +28,9 @@ nav {
 	font-size-adjust: 100%;
 	font-size: 12px;
 	cursor:pointer;
+	
+	/* yeji */
+	display:inline-block;
+	width:auto !important;
+	padding:0 0.8em;
 }

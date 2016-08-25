@@ -537,6 +537,40 @@ aside#detail_edit .wrap {
   aside#detail_edit .wrap .article .tags {
     border-bottom: 1px solid #e8e8e8;
   }
+  aside#detail_edit .wrap .article .tags .body .txt_tags{
+    width:calc(100%-121px)!important;
+    border:0;
+  }
+  aside#detail_edit .wrap .article .tags .body .txt_tags:hover,
+  aside#detail_edit .wrap .article .tags .body .txt_tags:active {
+    outline: none;
+  }
+
+  aside#detail_edit .wrap .article .tags .body div.tokenizer {
+    transition-duration: 0.6s;
+    position: relative;
+  	display:flex;
+  	align-items:center;
+    vertical-align: middle;
+    overflow: hidden;
+    width: 100% !important;
+    height: 100%;
+    margin:0;
+    background: #ffffff;
+    border: 0;
+    /* 	border-bottom: 1px solid #ddd; */
+    padding: 5px;
+  }
+  aside#detail_edit .wrap .article .tags .body div.tokenizer .label {
+  	font-size: 4vw;
+    height: 7vw;
+	line-height: 5.5vw;
+	margin:0 0.1em 0 0.1em;
+  }
+  aside#detail_edit .wrap .article .tags .body div.tokenizer .input {
+  	font-size: 4vw;
+	height:auto;
+  }
   aside#detail_edit .wrap .article .memo .body .txt_memo {
     font-size: 4vw;
     padding: 3vw;
@@ -574,6 +608,9 @@ aside#detail_edit .wrap {
     vertical-align: top;
     display: inline-block;
     width: calc(100% - 13vw);
+  }
+  aside#detail_edit .wrap .article .tags .body {
+    height:13vw;
   }
   aside#detail_edit .wrap .footer {
     margin: 0 auto;
@@ -685,6 +722,42 @@ aside#detail_edit .wrap {
     vertical-align: top;
     display: inline-block;
     width: calc(100% - 5em);
+  }
+  aside#detail_edit .wrap .article .tags .body {
+  	height:7em;
+  }  
+  aside#detail_edit .wrap .article .tags .body .txt_tags{
+    width:calc(100%-121px)!important;
+    border:0;
+  }
+  aside#detail_edit .wrap .article .tags .body .txt_tags:hover,
+  aside#detail_edit .wrap .article .tags .body .txt_tags:active {
+    outline: none;
+  }
+
+  aside#detail_edit .wrap .article .tags .body div.tokenizer {
+    position: relative;
+  	display:flex;
+  	align-items:center;
+    vertical-align: middle;
+    overflow: hidden;
+    width: 100% !important;
+    height: 100%;
+    margin:0;
+    background: #ffffff;
+    border: 0;
+    /* 	border-bottom: 1px solid #ddd; */
+    padding: 5px;
+  }
+  aside#detail_edit .wrap .article .tags .body div.tokenizer .label {
+  	font-size: 1.6em;
+    height: 1.8em;
+    line-height: 1.6em;
+	margin:0 0.1em 0 0.1em;
+  }
+  aside#detail_edit .wrap .article .tags .body div.tokenizer .input {
+  	font-size: 1.6em;
+	height:auto;
   }
   aside#detail_edit .wrap .footer {
     margin: 0 auto;
