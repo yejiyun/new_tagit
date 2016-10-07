@@ -6,16 +6,16 @@
 	
 	<!-- User 테이블에서 유저정보를 가져옴 기본 select문 -->
     <select id="selectAll" resultType = "com.nexters.tagit.model.UserModel">
-    	SELECT * FROM User
+    	SELECT * FROM user
     </select>
     
     <select id="selectById" resultType = "com.nexters.tagit.model.UserModel">
-    	SELECT * FROM User
+    	SELECT * FROM user
     	WHERE user_id = #{user_id}
     </select>
     
     <insert id="insertUser">
-    	INSERT INTO User
+    	INSERT INTO user
     	values(#{user_id},#{ide_num})
     </insert>
 

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <link rel="stylesheet" href="/resources/css/main.css">
+<script type="text/javascript" src="/resources/js/main.js"></script>
 <article id="main" class="tiles">
 <div class="wrap">
         <section class="tag_bundle">
@@ -141,7 +142,7 @@
         </div>
     </div>
 </article>
-<aside id="get" class="show">
+<aside id="get">
     <div class="wrap">
         <div class="header">
             <img class="btn_close" src="/resources/images/icon/x.png">
