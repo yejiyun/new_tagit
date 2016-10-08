@@ -46,16 +46,22 @@
         aside.find(".footer .btn_apply").click(function(){
         	var thumbnail = aside.find(".article .thumbnail .image").css("background-image");
         	var data = {
-        		id: aside.find(".article").data("id"),
-        		url: aside.find(".article .thumbnail .image").data("url"),
-        		content: aside.find(".article .content").text(),
-        		thumbnail: thumbnail.substr(5, thumbnail.length-2),
-        		tags: aside.find(".article .tags .body .txt_tags").val().split(","),
-        		memo: aside.find(".article .memo .body .txt_memo").val()
+        		item: {
+	        		id: aside.find(".article").data("id"),
+	        		url: aside.find(".article .thumbnail .image").data("url"),
+	        		content: aside.find(".article .content").text(),
+	        		thumbnail: thumbnail.substr(5, thumbnail.length-2),
+	        		memo: aside.find(".article .memo .body .txt_memo").val()
+        		},
+        		tags: aside.find(".article .tags .body .txt_tags").val()        		
         	}
         	
         	$.post("/item/api/add", data).done(function(response){
-        		console.log(response);
+        		if(response.state) {
+        			alert(response.message);
+        		} else {
+        			alert(response.message);
+        		}
         	});
         });
         aside.find(".tokenizer").remove();
