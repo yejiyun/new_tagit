@@ -5,7 +5,7 @@
 <link rel="stylesheet" href="/resources/css/list.css">
 <article id="list" class="tiles">
     <section class="cards layout_02">
-    	<c:forEach var="item" items="${result}" varStatus="loop">    
+    	<c:forEach var="item" items="${itemList}" varStatus="loop">    
         <div class="card" style="background-image:url(resources/images/sample/cat_01.png);">
             <div class="wrap delete">
                 <div class="center">
@@ -18,7 +18,7 @@
                 <div class="tap_holder"></div>
                 <div class="video"></div>
                 <div class="bottom">
-                    <div class="contents">${item.title}</div>
+                    <div class="contents">${item.memo}</div>
                     <div class="tags">
                     	<c:forEach var="eachTag" items="${item.tagList}" varStatus="tagLoop">
                         <span class="tag">#${eachTag.content}</span>

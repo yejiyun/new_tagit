@@ -16,4 +16,25 @@
 		WHERE
 			title LIKE #{keyword}
 	</select>
+	<select id="selectByTagId" parameterType="int" resultType="com.nexters.tagit.model.ItemModel">
+		select *
+		from item
+		where id = (select item_id
+		from item_tag
+		where tag_id = #{tag_id}
+		limit 1
+		)
+		
+	</select>
+	<select id="selectByCount" parameterType="int" resultType="com.nexters.tagit.model.ItemModel">
+		select *
+		from item
+		limit #{count}
+	</select>
+	
+	
+	<insert id="insert" useGeneratedKeys="true" keyProperty="id">
+		insert into item(url,create_time,thumbnail,content,user_id)
+		values(#{url},now(),#{thumbnail},#{content},#{user_id})
+	</insert>
 </mapper>

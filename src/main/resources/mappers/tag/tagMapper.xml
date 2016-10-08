@@ -14,7 +14,14 @@
 		WHERE
 			t.id = it.tag_id
 	</select>
-	
+	<select id="selectTagInit" parameterType="String" resultType="com.nexters.tagit.model.TagModel">
+		select *
+		from tag
+		order by create_time
+		where user_id = #{user_id}
+		limit 4
+		
+	</select>
 	<select id="selectLatestTagList" resultType="com.nexters.tagit.model.TagModel">
 		SELECT
 			id AS id,
@@ -26,7 +33,15 @@
 		ORDER BY edit_time DESC
 		LIMIT 7
 	</select>
-	
+	<select id ="selectByItemId" parameterType="int" resultType="com.nexters.tagit.model.TagModel">
+		select *
+		from tag
+		where id in (select tag_id
+			from item_tag
+			where item_id = #{item_id}
+		)
+		
+	</select>
 	<update id="updateTagEditTime" parameterType="string">
 		UPDATE
 			tag

@@ -7,15 +7,16 @@ package com.nexters.tagit.model;
  * created on 2016. 8. 21.
  */
 public class TagModel {
-	private Integer id;
+	private int id;
 	private String content;
 	private String createTime;
 	private String editTime;
 	
-	public Integer getId() {
+	
+	public int getId() {
 		return id;
 	}
-	public void setId(Integer id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 	public String getContent() {

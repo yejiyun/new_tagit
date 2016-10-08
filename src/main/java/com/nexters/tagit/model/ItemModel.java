@@ -10,9 +10,9 @@ import java.util.List;
  * created on 2016. 8. 21.
  */
 public class ItemModel {
-	private Integer id;
+	private int id;
 	private String url;
-	private String title;
+	private String memo;
 	private Date createTime;
 	private String thumbnail;
 	private String content;
@@ -20,11 +20,11 @@ public class ItemModel {
 	/* Extends */
 	private List<TagModel> tagList;
 
-	public Integer getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
@@ -36,12 +36,12 @@ public class ItemModel {
 		this.url = url;
 	}
 
-	public String getTitle() {
-		return title;
+	public String getMemo() {
+		return memo;
 	}
 
-	public void setTitle(String title) {
-		this.title = title;
+	public void setMemo(String memo) {
+		this.memo = memo;
 	}
 
 	public Date getCreateTime() {

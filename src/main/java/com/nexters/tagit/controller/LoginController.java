@@ -41,6 +41,7 @@ public class LoginController {
 	public String loginProcess(@RequestBody UserModel user, HttpSession session, Locale locale, Model model) throws JsonProcessingException {	
 		Map<String,Object> responseMap = new HashMap<String,Object>();
 		ObjectMapper objectMapper = new ObjectMapper();
+		System.out.println("logind");
 		if (user.getUser_id() != null) {
 			if (userMapper.selectById(user.getUser_id()) == null) {
 				userMapper.insertUser(user);
