@@ -2,7 +2,8 @@
 article#main {
   background-color: #eaeaea;
 }
-article#main .wrap {
+article#main > .wrap {
+  min-height:100%;
   padding: 1em;
 }
 article#main .wrap section {

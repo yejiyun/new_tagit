@@ -14,3 +14,4 @@
 <script src="/resources/js/lib/swiper.jquery.min.js"></script>
 <script src="/resources/js/facebook.js"></script>
 <script src="/resources/js/modules.js"></script>
+<script src="/resources/js/lib/mustache.min.js"></script>
