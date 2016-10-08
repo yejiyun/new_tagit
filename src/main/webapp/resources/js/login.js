@@ -53,7 +53,7 @@ $(function() {
                     return_scopes: true
                 });
 			},
-			noAuth : function(response) {
+			notAuth : function(response) {
 				FB.login(function (response) {
                     if (response.status === 'connected') {
                         location.reload();
