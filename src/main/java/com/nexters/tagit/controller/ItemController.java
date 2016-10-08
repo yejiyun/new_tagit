@@ -9,8 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.nexters.tagit.mapper.ItemMapper;
@@ -42,23 +44,20 @@ public class ItemController {
 		return "tiles/list";
 	}
 	
+	
 	@ResponseBody
 	@RequestMapping(value = "/api/add", method = RequestMethod.POST)
-	public Response addItem(ItemModel item,String[] tags,Model model,HttpServletResponse response,HttpSession session){
+	public Response addItem(ItemModel item,@RequestParam("tags") String tags,Model model,HttpServletResponse response,HttpSession session){
 		response.addHeader("Access-Control-Allow-Origin", "*");
 		Response res = new Response();
 		if(session.getAttribute("session")!=null){
-			for(String s:tags){
-				System.out.println(s);
-			}
-			System.out.println(item.getUrl());
-			System.out.println(item.getThumbnail());
-			/*
+			
+			
 			itemMapper.insert(item);
 			res.setState(true);
 			res.setMessage("Item 삽입 성공");
 			return res;
-			*/
+			
 		}
 		res.setState(false);
 		res.setMessage("로그인 상태 아님");
