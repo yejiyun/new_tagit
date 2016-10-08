@@ -34,7 +34,7 @@
 	
 	
 	<insert id="insert" useGeneratedKeys="true" keyProperty="id">
-		insert into item(url,create_time,thumbnail,content,user_id)
-		values(#{url},now(),#{thumbnail},#{content},#{user_id})
+		insert into item(url,create_time,thumbnail,content,user_id,attachment)
+		values(#{url},now(),#{thumbnail},#{content},#{user_id},#{attachMent})
 	</insert>
 </mapper>

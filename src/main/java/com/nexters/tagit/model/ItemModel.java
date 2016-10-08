@@ -6,8 +6,7 @@ import java.util.List;
 /**
  * item 테이블의 맵핑 모델
  * 
- * @author madplay
- * created on 2016. 8. 21.
+ * @author madplay created on 2016. 8. 21.
  */
 public class ItemModel {
 	private int id;
@@ -16,6 +15,15 @@ public class ItemModel {
 	private Date createTime;
 	private String thumbnail;
 	private String content;
+	private String attachMent;
+
+	public String getAttachMent() {
+		return attachMent;
+	}
+
+	public void setAttachMent(String attachMent) {
+		this.attachMent = attachMent;
+	}
 
 	/* Extends */
 	private List<TagModel> tagList;

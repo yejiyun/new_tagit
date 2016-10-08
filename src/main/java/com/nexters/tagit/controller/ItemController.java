@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -52,8 +51,9 @@ public class ItemController {
 		Response res = new Response();
 		if(session.getAttribute("session")!=null){
 			
-			
-			itemMapper.insert(item);
+			//itemMapper.insert(item);
+			System.out.println(item.getMemo());
+			System.out.println(tags);
 			res.setState(true);
 			res.setMessage("Item 삽입 성공");
 			return res;

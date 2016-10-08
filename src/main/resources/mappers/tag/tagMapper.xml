@@ -42,6 +42,11 @@
 		)
 		
 	</select>
+	<insert id="insert" useGeneratedKeys="true" keyProperty="id">
+		insert into tag(content,user_id,create_time,edit_time)
+		values(#{content},#{user_id},now(),now())
+		
+	</insert>
 	<update id="updateTagEditTime" parameterType="string">
 		UPDATE
 			tag
