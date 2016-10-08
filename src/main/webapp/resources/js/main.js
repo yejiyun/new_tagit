@@ -47,8 +47,8 @@
         	var thumbnail = aside.find(".article .thumbnail .image").css("background-image");
         	var data = {
         		item: {
-	        		id: aside.find(".article").data("id"),
-	        		url: aside.find(".article .thumbnail .image").data("url"),
+	        		attachment: aside.find(".article").attr("data-id"),
+	        		url: aside.find(".article .thumbnail .image").attr("data-url"),
 	        		content: aside.find(".article .content").text(),
 	        		thumbnail: thumbnail.substr(5, thumbnail.length-2),
 	        		memo: aside.find(".article .memo .body .txt_memo").val()
@@ -58,10 +58,14 @@
         	
         	$.post("/item/api/add", data).done(function(response){
         		if(response.state) {
-        			alert(response.message);
-        		} else {
-        			alert(response.message);
+        			aside.find(".txt_tags").val("");
+        			aside.find(".tokenizer li span.label").each(function(){$(this).parent().remove();});
+        			aside.find(".txt_memo").val("");
         		}
+        		
+        		if(response.message) {
+        			alert(response.message);
+        		}        		
         	});
         });
         aside.find(".tokenizer").remove();
@@ -71,6 +75,7 @@
 
         var setFeed = function(feed) {
             var data = feed.data[0];
+            console.log(data);
 	        if(feed.data.length) {
 	            
 	            if(!data.picture)
@@ -79,9 +84,10 @@
 	            aside.find(".article").attr("data-id", data.id);
 	            aside.find(".article .content").text(data.message || data.name);
 	            aside.find(".article .thumbnail .image").css("background-image", "url(" + data.picture + "), url(/resources/images/sample/no-image.png)");
+	            aside.find(".article .thumbnail .image").off("click");
 	            if(data.link) {
 		            aside.find(".article .thumbnail .image").attr("data-url", data.link);
-		            aside.find(".article .thumbnail .image").click(function(){ $(location).attr("href", $(this).data("url"));});
+		            aside.find(".article .thumbnail .image").on("click", function(){ window.open($(this).attr("data-url"))});
 	            }
 	            
 	            if (feed.paging) {
