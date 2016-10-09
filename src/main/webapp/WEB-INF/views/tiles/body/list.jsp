@@ -6,7 +6,7 @@
 <article id="list" class="tiles">
     <section class="cards layout_02">
     	<c:forEach var="item" items="${itemList}" varStatus="loop">    
-        <div class="card" style="background-image:url(resources/images/sample/cat_01.png);">
+        <div class="card" style="background-image:url(${item.thumbnail});">
             <div class="wrap delete">
                 <div class="center">
                     <div class="trash"><img src="resources/images/icon/trash.png"></div>

@@ -31,10 +31,20 @@
 		from item
 		limit #{count}
 	</select>
-	
+	<select id="selectByItemTag" parameterType="int" resultType="com.nexters.tagit.model.ItemModel">
+		select i.*
+		from item i join item_tag t
+		on i.id = t.item_id
+		where t.tag_id = #{tag_id}
+		limit 1;
+	</select>
 	
 	<insert id="insert" useGeneratedKeys="true" keyProperty="id">
-		insert into item(url,create_time,thumbnail,content,user_id,attachment)
-		values(#{url},now(),#{thumbnail},#{content},#{user_id},#{attachMent})
+		insert into item(url,create_time,thumbnail,content,user_id,attachment,memo)
+		values(#{url},now(),#{thumbnail},#{content},#{user_id},#{attachment},#{memo})
+	</insert>
+	<insert id="insertItemTag">
+		insert into item_tag
+		values(#{item_id},#{tag_id})
 	</insert>
 </mapper>

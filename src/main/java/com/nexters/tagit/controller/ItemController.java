@@ -16,8 +16,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.nexters.tagit.mapper.ItemMapper;
 import com.nexters.tagit.mapper.TagMapper;
+import com.nexters.tagit.mapper.UserTagMapper;
 import com.nexters.tagit.model.ItemModel;
+import com.nexters.tagit.model.ItemTag;
 import com.nexters.tagit.model.Response;
+import com.nexters.tagit.model.TagModel;
+import com.nexters.tagit.model.UserModel;
+import com.nexters.tagit.model.UserTagModel;
 import com.nexters.tagit.service.AuthService;
 
 
@@ -28,6 +33,7 @@ public class ItemController {
 	@Autowired AuthService authService;
 	@Autowired ItemMapper itemMapper;
 	@Autowired TagMapper tagMapper;
+	@Autowired UserTagMapper userTagMapper;
 	
 	
 	@RequestMapping(value="/api/list/{count}",method = RequestMethod.GET)
@@ -37,7 +43,9 @@ public class ItemController {
 			List<ItemModel> itemList = itemMapper.selectByCount(Integer.parseInt(count));
 			for(ItemModel item : itemList){
 				item.setTagList(tagMapper.selectByItemId(item.getId()));
+				
 			}
+			
 			model.addAttribute("itemList",itemList);
 		}
 		return "tiles/list";
@@ -50,17 +58,46 @@ public class ItemController {
 		response.addHeader("Access-Control-Allow-Origin", "*");
 		Response res = new Response();
 		if(session.getAttribute("session")!=null){
+			UserModel user = (UserModel)session.getAttribute("session");
+			item.setUser_id(user.getUser_id());
+			itemMapper.insert(item);
+			String[] tagList = tags.split(",");
+			for(String tag : tagList){
+				TagModel search = tagMapper.selectByContent(tag);
+				if(search==null){
+					TagModel tagModel = new TagModel();
+					tagModel.setContent(tag);
+					tagModel.setUser_id(user.getUser_id());
+					tagMapper.insert(tagModel);
+					UserTagModel userTag = new UserTagModel();
+					userTag.setTag_id(tagModel.getId());
+					userTag.setUser_id(user.getUser_id());
+					userTagMapper.insert(userTag);
+					ItemTag itemTag = new ItemTag();
+					itemTag.setItem_id(item.getId());
+					itemTag.setTag_id(tagModel.getId());
+					itemMapper.insertItemTag(itemTag);
+				}
+				else{
+					UserTagModel userTag = new UserTagModel();
+					userTag.setTag_id(search.getId());
+					userTag.setUser_id(user.getUser_id());
+					userTagMapper.insert(userTag);
+					ItemTag itemTag = new ItemTag();
+					itemTag.setItem_id(item.getId());
+					itemTag.setTag_id(search.getId());
+					itemMapper.insertItemTag(itemTag);
+				}
+
+			}
 			
-			//itemMapper.insert(item);
-			System.out.println(item.getMemo());
-			System.out.println(tags);
 			res.setState(true);
-			res.setMessage("Item 삽입 성공");
+			res.setMessage("Item 삽입 하였습니다.");
 			return res;
 			
 		}
 		res.setState(false);
-		res.setMessage("로그인 상태 아님");
+		res.setMessage("로그인 상태가 아닙니다.");
 		return res;
 		
 	}

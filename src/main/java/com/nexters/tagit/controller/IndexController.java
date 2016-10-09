@@ -14,9 +14,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.nexters.tagit.mapper.ItemMapper;
 import com.nexters.tagit.mapper.TagMapper;
+import com.nexters.tagit.mapper.UserTagMapper;
 import com.nexters.tagit.model.ItemModel;
-import com.nexters.tagit.model.TagModel;
 import com.nexters.tagit.model.UserModel;
+import com.nexters.tagit.model.UserTagModel;
 
 @Controller
 public class IndexController {
@@ -24,26 +25,30 @@ public class IndexController {
 	
 	@Autowired TagMapper tagMapper;
 	@Autowired ItemMapper itemMapper;
+	@Autowired UserTagMapper userTagMapper;
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String mainTiles(Locale locale, Model model,HttpSession session) {
-		UserModel user = (UserModel)session.getAttribute("sesssion");
+		UserModel user = (UserModel)session.getAttribute("session");
 		if(user!=null){
-			List<TagModel> tagList = tagMapper.selectTagInit(user.getUser_id());
+			List<UserTagModel> userTagList = userTagMapper.selectByInit();
 			List<ItemModel> itemList = new ArrayList<ItemModel>();
-			if(tagList==null){
+			if(userTagList==null){
+				
 				return "tiles/main";
 			}
-			for(int i=0;i<tagList.size();i++){
-				itemList.add(itemMapper.selectByTagId(tagList.get(i).getId()));
+			for(UserTagModel userTag : userTagList){
+				ItemModel item = itemMapper.selectByItemTag(userTag.getTag_id());
+				item.setTagName(tagMapper.selectContent(userTag.getTag_id()));
+				itemList.add(item);
 			}
-			
-			
 			model.addAttribute("itemList",itemList);
+			
 			return "tiles/main";
 		}
-		
 		return "tiles/main";
+
 	}
+	
 	
 }

@@ -12,4 +12,6 @@ public interface TagMapper {
 	public List<TagModel> selectLatestTagList();
 	List<TagModel> selectTagInit(String user_id);
 	void insert(TagModel tag);
+	TagModel selectByContent(String content);
+	String selectContent(int id);
 }

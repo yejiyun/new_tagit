@@ -1,5 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"
+%><%@ taglib prefix="c"   uri="http://java.sun.com/jsp/jstl/core"
+%><%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"
+%><%@ taglib prefix="fn"  uri="http://java.sun.com/jsp/jstl/functions" %>
 <link rel="stylesheet" href="/resources/css/main.css">
 <script type="text/javascript" src="/resources/js/main.js"></script>
 <script type="x-tmpl-mustache" id="mt_tag_bundle">
@@ -18,7 +20,26 @@
 </section>
 </script>
 <article id="main" class="tiles">
-	<div class="wrap"></div>
+	
+	<div class="wrap">
+		<c:forEach var="item" items="${itemList}" varStatus="loop"> 
+		<section class="tag_bundle">
+			<header>
+				<img src="resources/images/icon/get_memo_sharp.png"/>
+			
+		           <span>#${item.tagName}</span>
+		        
+			</header>
+			<article class="items layout_{{layout}}">
+				
+				<div class="item" data-id="${item.id}" style="background-image:url(${item.thumbnail});">
+					<div class="contents"><pre>${item.content}</pre></div>
+				</div>
+				
+			</article>
+	     </section>
+	     </c:forEach>
+	</div>
 	<div class="card_detail">
 		<div class="header">
 			<div class="wrap">

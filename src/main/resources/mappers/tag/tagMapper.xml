@@ -22,6 +22,16 @@
 		limit 4
 		
 	</select>
+	<select id="selectByContent" parameterType="String" resultType="com.nexters.tagit.model.TagModel">
+		select *
+		from tag
+		where content = #{content}
+	</select>
+	<select id="selectContent" parameterType="int" resultType="String">
+			select content
+			from tag
+			where id = #{id};
+	</select>
 	<select id="selectLatestTagList" resultType="com.nexters.tagit.model.TagModel">
 		SELECT
 			id AS id,

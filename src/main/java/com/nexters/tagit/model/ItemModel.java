@@ -15,14 +15,33 @@ public class ItemModel {
 	private Date createTime;
 	private String thumbnail;
 	private String content;
-	private String attachMent;
+	private String attachment;
+	private String tagName;
 
-	public String getAttachMent() {
-		return attachMent;
+	public String getTagName() {
+		return tagName;
 	}
 
-	public void setAttachMent(String attachMent) {
-		this.attachMent = attachMent;
+	public void setTagName(String tagName) {
+		this.tagName = tagName;
+	}
+
+	public String getAttachment() {
+		return attachment;
+	}
+
+	public void setAttachment(String attachment) {
+		this.attachment = attachment;
+	}
+
+	private String user_id;
+
+	public String getUser_id() {
+		return user_id;
+	}
+
+	public void setUser_id(String user_id) {
+		this.user_id = user_id;
 	}
 
 	/* Extends */

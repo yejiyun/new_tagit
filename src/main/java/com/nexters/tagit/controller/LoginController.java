@@ -49,7 +49,7 @@ public class LoginController {
 			session.setAttribute("session", user);
 			responseMap.put("state", true);
 			responseMap.put("message", "성공");
-			responseMap.put("action", "location.href='/';");
+			responseMap.put("action", "location.href='';");
 		} else {
 			responseMap.put("state", false);
 			responseMap.put("message", "실패, user_id 가 존재하지 않습니다.");
