@@ -1,5 +1,7 @@
 package com.nexters.tagit.service;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 
@@ -24,7 +26,19 @@ public class TagService {
 	public List<TagModel> getTagListByItemId(Integer itemId) {
 		return tagMapper.selectTagListByItemId(itemId);
 	}
+	public List<TagModel> selectByContentList(String rawKeyword){
+		String[] keywordArr = rawKeyword.split(",");
+		List<TagModel> tm = new ArrayList<TagModel>();
+		
+		for(String temp : keywordArr){
+			tm.add(tagMapper.selectByContent(temp));
+		}
+		
+		
+		return tm;
 	
+		
+	}
 	public int updateTagEditTime(List<TagModel> tagList) {
 		Iterator<TagModel> it = tagList.iterator();
 		String tagIdList = "";

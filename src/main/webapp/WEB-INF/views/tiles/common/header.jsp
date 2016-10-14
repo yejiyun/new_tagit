@@ -11,4 +11,19 @@
 		id="top_logo" src="/resources/images/icon/top_logo.png"> <input
 		class="span4" type="text" data-provide="tokenizer" value=""> <img
 		id="search" src="/resources/images/icon/search.png">
+		
+		
 </div>
+<script>
+	$(document).ready(function(){
+		
+		$("#search").click(function(){
+			if($("#header").hasClass("open")){
+				location.href = "/search/"+$(".span4").val()+"/api";
+			}
+			$("#header").toggleClass("open");
+			
+		});
+	});
+
+</script>

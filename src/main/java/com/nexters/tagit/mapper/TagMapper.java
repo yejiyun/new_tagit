@@ -2,6 +2,7 @@ package com.nexters.tagit.mapper;
 
 import java.util.List;
 
+import com.nexters.tagit.model.ItemTag;
 import com.nexters.tagit.model.TagModel;
 
 public interface TagMapper {
@@ -13,5 +14,7 @@ public interface TagMapper {
 	List<TagModel> selectTagInit(String user_id);
 	void insert(TagModel tag);
 	TagModel selectByContent(String content);
+	List<TagModel> selectByContentList(String content);
 	String selectContent(int id);
+	
 }

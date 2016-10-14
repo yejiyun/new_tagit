@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.nexters.tagit.mapper.ItemMapper;
+import com.nexters.tagit.mapper.SearchMapper;
 import com.nexters.tagit.mapper.TagMapper;
 import com.nexters.tagit.mapper.UserTagMapper;
 import com.nexters.tagit.model.ItemModel;
@@ -26,6 +27,7 @@ public class IndexController {
 	@Autowired TagMapper tagMapper;
 	@Autowired ItemMapper itemMapper;
 	@Autowired UserTagMapper userTagMapper;
+	@Autowired SearchMapper searchMapper;
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String mainTiles(Locale locale, Model model,HttpSession session) {
@@ -42,6 +44,7 @@ public class IndexController {
 				item.setTagName(tagMapper.selectContent(userTag.getTag_id()));
 				itemList.add(item);
 			}
+			model.addAttribute("recentSearch", searchMapper.selectUserSearch(user.getUser_id()));
 			model.addAttribute("itemList",itemList);
 			
 			return "tiles/main";

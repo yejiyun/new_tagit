@@ -27,6 +27,11 @@
 		from tag
 		where content = #{content}
 	</select>
+	<select id="selectByContentList" parameterType="String" resultType="com.nexters.tagit.model.TagModel">
+		select *
+		from tag
+		where content in #{content}
+	</select>
 	<select id="selectContent" parameterType="int" resultType="String">
 			select content
 			from tag

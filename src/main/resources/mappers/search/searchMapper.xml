@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+             "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+             
+<mapper namespace="com.nexters.tagit.mapper.SearchMapper">
+	<insert id="insert" useGeneratedKeys="true" keyProperty="id">
+		insert into search(content)
+		values(#{content})
+	</insert>
+	<insert id="insertUserSearch">
+		insert into user_search
+		values(#{userId},#{searchId},now())
+	</insert>
+	<select id="selectCheckUp" resultType="com.nexters.tagit.model.UserSearchModel">
+		select *
+		from user_search
+		where userId = #{userId} and searchId = #{searchId}
+	</select>
+	<update id="update">
+		update user_search
+		set search_time = now()
+		where userId = #{userId} and searchId = #{searchId}
+		
+	</update>
+	<select id="selectByContent" parameterType="String"  resultType="com.nexters.tagit.model.SearchModel">
+		select *
+		from search
+		where content = #{content};
+	</select>
+	<select id="selectUserSearch" parameterType="String" resultType="com.nexters.tagit.model.SearchModel">
+		select *
+		from search
+		where id in(select searchId
+		from user_search
+		where userId = #{id}
+		)
+		limit 5
+	</select>
+	
+</mapper>

@@ -5,12 +5,7 @@
 <mapper namespace="com.nexters.tagit.mapper.ItemMapper">
 	<select id="selectItemListByKeyword" parameterType="string" resultType="com.nexters.tagit.model.ItemModel">
 		SELECT
-			id AS id,
-			url AS url,
-			title AS title,
-			create_time AS createTime,
-			thumbnail AS thumbnail,
-			content AS content
+		*
 		FROM
 			item
 		WHERE
@@ -31,12 +26,27 @@
 		from item
 		limit #{count}
 	</select>
+    <select id="selectByItemTagId" parameterType="List" resultType="com.nexters.tagit.model.ItemTag">
+		select distinct item_id
+		from item_tag
+		where tag_id in 
+		<foreach collection="list" item="id"  open="(" close=")" separator=",">
+            #{id}
+        </foreach>
+		
+		
+	</select>
 	<select id="selectByItemTag" parameterType="int" resultType="com.nexters.tagit.model.ItemModel">
 		select i.*
 		from item i join item_tag t
 		on i.id = t.item_id
 		where t.tag_id = #{tag_id}
 		limit 1;
+	</select>
+	<select id="selectByItemId" parameterType="int" resultType="com.nexters.tagit.model.ItemModel">
+		select *
+		from item
+		where id = #{id}
 	</select>
 	
 	<insert id="insert" useGeneratedKeys="true" keyProperty="id">
