@@ -10,7 +10,15 @@
 	<select id="selectByInit" resultType="com.nexters.tagit.model.UserTagModel">
 		select *
 		from user_tag
+		group by tag_id
 		limit 4;
+	</select>
+	<select id="selectByUserWithPaging" resultType="com.nexters.tagit.model.UserTagModel">
+		select * from user_tag
+		where user_id = '${user_id}'
+		group by tag_id
+		order by create_time desc
+		limit ${index}, ${rfp}
 	</select>
 	
 </mapper>

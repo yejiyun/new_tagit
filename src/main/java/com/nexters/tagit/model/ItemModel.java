@@ -16,15 +16,6 @@ public class ItemModel {
 	private String thumbnail;
 	private String content;
 	private String attachment;
-	private String tagName;
-
-	public String getTagName() {
-		return tagName;
-	}
-
-	public void setTagName(String tagName) {
-		this.tagName = tagName;
-	}
 
 	public String getAttachment() {
 		return attachment;

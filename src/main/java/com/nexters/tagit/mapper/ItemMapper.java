@@ -11,7 +11,7 @@ public interface ItemMapper {
 	ItemModel selectByTagId(int tag_id);
 	ItemModel selectByItemId(int id);
 	List<ItemModel> selectByCount(int count);
-	ItemModel selectByItemTag(int tag_id);
+	List<ItemModel> selectByItemTag(int tag_id);
 	void insertItemTag(ItemTag itemTag);
 	List<ItemTag> selectByItemTagId(List<Integer> list);
 }

@@ -1,30 +1,74 @@
 (function() {
     $(window).load(function() {
     	// Pre-parsing and Caching Templates
-        window._modules = {
-            aside: new Modules($("aside#get")),
-            detail: new Modules($("div.card_detail"))
+        window._global = {
+        	page: 0,
+	        modules: {
+	            aside: new Modules($("aside#get")),
+	            detail: new Modules($("div.card_detail"))
+	        },
+	        async: {
+	        	infinite_scroll: true
+	        }
         };
         
         $("script[type=x-tmpl-mustache]").each(function(){
-        	_modules[$(this).attr("id")] = $(this).html();
-        	Mustache.parse(_modules[$(this).attr("id")]);
+        	_global[$(this).attr("id")] = $(this).html();
+        	Mustache.parse(_global[$(this).attr("id")]);
         });
     });
     
     $(window).scroll(function(event){
     	// infinite scroll
-    	if(Math.ceil($(window).scrollTop()) == $(document).height() - $(window).height()){
-           for(i=0;i<5;i++) {
-           	$("article .wrap").prepend(Mustache.render(_modules.mt_tag_bundle, {tag_content:"태그", layout:"01", items:[{item_id:3, item_thumbnail:"/resources/images/sample/cat_01.png", item_content:"content"}]}));
-           }
-        }
+    	if(_global != null) {
+	    	if(_global.async.infinite_scroll) {
+		    	if(Math.ceil($(window).scrollTop()) == $(document).height() - $(window).height()){
+		    		_global.async.infinite_scroll = false;
+		    		_global.page++;
+		    		
+		    		$.ajax({
+		        		url: "/api/tag/bundle",
+		        		method :"POST",
+		        		data : {"page": _global.page},
+		        		success : function(response) {
+		        			console.log(response);
+		        			if(response.state) {
+		        				var data = response.data, size;
+		        				_global.async.infinite_scroll = true;
+		        				
+		        				for(var idx in data) {
+		        					var tag = data[idx];
+			        				if(tag.list.length < 2) {
+			        					size = "01";
+			        				} else if(tag.list.length < 3) {
+			        					size = "02";
+			        				} else if(tag.list.length < 4) {
+			        					size = "03";
+			        				} else {
+			        					size = "04";
+			        				}
+			        				
+			        				var param = {
+			        						tagName: tag.name,
+			        						layout: size,
+			        						items: tag.list
+			        				}
+			        				$("article#main .wrap").append(Mustache.render(_global.mt_tag_bundle, param));
+		        				} 
+		        			} else {
+	        					$("article#main .more").remove();
+	        				}
+		        		}
+					});
+		        }
+	    	}
+    	}
     });
     
     $(".fixed_header #get").on("click", asideGet);
     
     $(document).on("click", "article.tiles section.tag_bundle article.items .item", function(){
-    	var detail = _modules.detail.init();
+    	var detail = _global.modules.detail.init();
     	detail.find(".header .btn_back").click(function() {
             detail.animate({
                 opacity: 0
@@ -35,7 +79,7 @@
     });
 
     function asideGet() {
-        var aside = _modules.aside.init();
+        var aside = _global.modules.aside.init();
         aside.find(".header .btn_close").click(function() {
             aside.animate({
                 opacity: 0
@@ -55,7 +99,7 @@
 	        		tags: tags.join(",")        		
         	}
         	$.ajax({
-        		url: "/item/api/add",
+        		url: "/api/item/add",
         		method :"POST",
         		data : data,
         		success : function(response) {
@@ -86,7 +130,7 @@
 	
 	            aside.find(".article").attr("data-id", data.id);
 	            aside.find(".article .content").text(data.message || data.name);
-	            aside.find(".article .thumbnail .image").css("background-image", "url(" + data.picture + "), url(/resources/images/sample/no-image.png)");
+	            aside.find(".article .thumbnail .image").css("background-image", "url(" + data.picture + ")");
 	            aside.find(".article .thumbnail .image").off("click");
 	            if(data.link) {
 		            aside.find(".article .thumbnail .image").attr("data-url", data.link);

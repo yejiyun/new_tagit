@@ -41,7 +41,6 @@
 		from item i join item_tag t
 		on i.id = t.item_id
 		where t.tag_id = #{tag_id}
-		limit 1;
 	</select>
 	<select id="selectByItemId" parameterType="int" resultType="com.nexters.tagit.model.ItemModel">
 		select *

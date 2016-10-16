@@ -58,10 +58,7 @@ public class SearchController {
 			item.setTagList(tagMapper.selectByItemId(userTag.getItem_id()));
 			itemList.add(item);
 		}
-		mav.addObject("itemList",itemList);
-		
-		
-		
+		mav.addObject("itemList",itemList);		
 		return mav;
 	}
 	

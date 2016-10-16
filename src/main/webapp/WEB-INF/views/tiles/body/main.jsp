@@ -8,38 +8,53 @@
 <section class="tag_bundle">
 	<header>
 		<img src="resources/images/icon/get_memo_sharp.png"/>
-		<span>{{tag_content}}</span>
+		<span>{{tagName}}</span>
 	</header>
 	<article class="items layout_{{layout}}">
 		{{#items}}
-		<div class="item" data-id="{{item_id}}" style="background-image:url({{item_thumbnail}});">
-			<div class="contents"><pre>{{item_content}}</pre></div>
+		<div class="item" data-id="{{id}}" style="background-image:url({{thumbnail}});">
+			<div class="contents"><pre>{{content}}</pre></div>
 		</div>
 		{{/items}}
 	</article>
 </section>
 </script>
-<article id="main" class="tiles">
-	
+<article id="main" class="tiles">	
 	<div class="wrap">
-		<c:forEach var="item" items="${itemList}" varStatus="loop"> 
+		<c:forEach var="tag" items="${tagBundles}" varStatus="loop"> 
 		<section class="tag_bundle">
 			<header>
 				<img src="resources/images/icon/get_memo_sharp.png"/>
 			
-		           <span>#${item.tagName}</span>
+		           <a>${tag.get('name')}</a>
 		        
 			</header>
-			<article class="items layout_{{layout}}">
-				
-				<div class="item" data-id="${item.id}" style="background-image:url(${item.thumbnail});">
-					<div class="contents"><pre>${item.content}</pre></div>
-				</div>
-				
+			<c:set var="size" value="${tag.get('list').size()}" />
+			<c:choose>
+			    <c:when test="${size < 2}">
+			        <c:set var="size" value="01" />
+			    </c:when>
+			    <c:when test="${size < 3}">
+			        <c:set var="size" value="02" />
+			    </c:when>
+			    <c:when test="${size < 4}">
+			        <c:set var="size" value="03" />
+			    </c:when>
+			    <c:otherwise>
+			        <c:set var="size" value="04" />
+			    </c:otherwise>
+			</c:choose>
+			<article class="items layout_${size}">
+				<c:forEach var="item" items="${tag.get('list')}" varStatus="loop"> 
+					<div class="item" data-id="${item.id}" style="background-image:url(${item.thumbnail});">
+						<div class="contents"><pre>${item.content}</pre></div>
+					</div>
+				</c:forEach>
 			</article>
 	     </section>
 	     </c:forEach>
 	</div>
+	<div class="more">불러오는중...</div>
 	<div class="card_detail">
 		<div class="header">
 			<div class="wrap">
@@ -72,8 +87,7 @@
 				<div class="image"
 					style="background-image: url(/resources/images/sample/cat_01.png);">
 					<div class="wrap">
-						<div class="content">강아지는 멍멍하고 짖는다. 왜냐하면 강아지이 기 때문이다. 사실
-							강아지는 야옹할수 없는...</div>
+						<div class="content"></div>
 					</div>
 				</div>
 				<div class="next"></div>
