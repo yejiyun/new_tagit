@@ -53,24 +53,55 @@ public class ItemApiController {
 	@Autowired
 	private SearchService searchService;
 	
-	@RequestMapping(value="/item/{id}/{keyword}/update", method = RequestMethod.POST)
-	public ModelAndView update(@PathVariable String id,
-			@RequestParam String memo,@PathVariable String keyword,HttpSession session) {
-		ModelAndView mav = new ModelAndView("tiles/list");
-		
-		itemMapper.update(memo, Integer.parseInt(id));
-		
-		UserModel user = (UserModel)session.getAttribute("session");
-		searchService.checkUp(keyword,user.getUser_id());
-		List<ItemTag> itemTag = itemService.getItemTagByTagId(tagService.selectByContentList(keyword));
-		List<ItemModel> itemList = new ArrayList<ItemModel>();
-		for(ItemTag userTag : itemTag){
-			ItemModel item = itemMapper.selectByMyItemId(userTag.getItem_id(),user.getUser_id());
-			item.setTagList(tagMapper.selectByItemId(userTag.getItem_id()));
-			itemList.add(item);
+	@ResponseBody
+	@RequestMapping(value="/item/{keyword}/update", method = RequestMethod.POST)
+	public Response update(ItemModel item,@RequestParam("tags") String tags,
+			@PathVariable String keyword,HttpSession session) {
+		Response res = new Response();
+		if(session.getAttribute("session")!=null){
+			UserModel user = (UserModel)session.getAttribute("session");
+			itemMapper.update(item);
+			itemMapper.deleteItemTag(item.getId());
+			String[] tagList = tags.split(",");
+			for(String tag : tagList){
+				TagModel search = tagMapper.selectByContent(tag);
+				if(search==null){
+					TagModel tagModel = new TagModel();
+					tagModel.setContent(tag);
+					tagModel.setUser_id(user.getUser_id());
+					tagMapper.insert(tagModel);
+					UserTagModel userTag = new UserTagModel();
+					userTag.setTag_id(tagModel.getId());
+					userTag.setUser_id(user.getUser_id());
+					userTagMapper.insert(userTag);
+					ItemTag itemTag = new ItemTag();
+					itemTag.setItem_id(item.getId());
+					itemTag.setTag_id(tagModel.getId());
+					itemMapper.insertItemTag(itemTag);
+				}
+				else{
+					UserTagModel userTag = new UserTagModel();
+					userTag.setTag_id(search.getId());
+					userTag.setUser_id(user.getUser_id());
+					if(userTagMapper.selectById(userTag)==null){
+						userTagMapper.insert(userTag);
+					}
+					ItemTag itemTag = new ItemTag();
+					itemTag.setItem_id(item.getId());
+					itemTag.setTag_id(search.getId());
+					itemMapper.insertItemTag(itemTag);
+				}
+
+			}
+			
+			res.setState(true);
+			res.setMessage("Item 삽입 하였습니다.");
+			return res;
+			
 		}
-		mav.addObject("itemList",itemList);		
-		return mav;
+		res.setState(false);
+		res.setMessage("로그인 상태가 아닙니다.");
+		return res;		
 	} 
 	
 	
@@ -128,7 +159,9 @@ public class ItemApiController {
 					UserTagModel userTag = new UserTagModel();
 					userTag.setTag_id(search.getId());
 					userTag.setUser_id(user.getUser_id());
-					userTagMapper.insert(userTag);
+					if(userTagMapper.selectById(userTag)==null){
+						userTagMapper.insert(userTag);
+					}
 					ItemTag itemTag = new ItemTag();
 					itemTag.setItem_id(item.getId());
 					itemTag.setTag_id(search.getId());

@@ -20,5 +20,5 @@ public interface ItemMapper {
 	List<ItemTag> selectByItemTagId(List<Integer> list);
 	void delete(int id);
 	void deleteItemTag(int id);
-	void update(@Param("memo") String memo, @Param("id") int id);
+	void update(ItemModel item);
 }

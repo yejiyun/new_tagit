@@ -13,6 +13,11 @@
 		group by tag_id
 		limit 4;
 	</select>
+	<select id="selectById"  resultType="com.nexters.tagit.model.UserTagModel">
+		select *
+		from user_tag
+		where user_id = #{user_id} and tag_id = #{tag_id}
+	</select>
 	<select id="selectByUserWithPaging" resultType="com.nexters.tagit.model.UserTagModel">
 		select * from user_tag
 		where user_id = '${user_id}'

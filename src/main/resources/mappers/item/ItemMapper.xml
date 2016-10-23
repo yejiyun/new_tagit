@@ -70,7 +70,7 @@
 		insert into item_tag
 		values(#{item_id},#{tag_id})
 	</insert>
-	<update id ="update" parameterType="map">
+	<update id ="update">
 		update item
 		set memo = #{memo}
 		where id = #{id}
