@@ -92,7 +92,6 @@
         });
     	
     	detail.attr("data-id", itemId);
-    	
     	$.ajax({
     		url: "/api/item/" + itemId,
     		method :"GET",
@@ -220,7 +219,6 @@
 			});
         });
         aside.find(".tokenizer").remove();
-        aside.find(".txt_tags").attr("value", "왜,안되,지?");
         aside.find(".txt_tags").tokenizer();
 
         aside.addClass("show");

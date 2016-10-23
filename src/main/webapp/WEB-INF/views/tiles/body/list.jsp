@@ -7,9 +7,8 @@
 
 <article id="list" class="tiles">
     <section class="cards layout_02">
-    	<c:forEach var="item" items="${itemList}" varStatus="loop">   
-    	<input id="id" type="hidden" value="${item.id}"/>   
-        <div class="card" style="background-image:url(${item.thumbnail});">
+    	<c:forEach var="item" items="${itemList}" varStatus="loop">
+        <div class="card" style="background-image:url(${item.thumbnail});" data-id="${item.id}">
             <div class="wrap delete">
                 <div class="center">
                     <div class="trash"><img src="/resources/images/icon/trash.png"></div>
@@ -37,7 +36,7 @@
 <!--         <div class="card text"> -->
 <!--             <div class="wrap delete"> -->
 <!--                 <div class="center"> -->
-<!--                     <div class="trash"><img src="resources/images/icon/trash.png"></div> -->
+<!--                     <div class="trash"><img src="/resources/images/icon/trash.png"></div> -->
 <!--                     <div class="btn_delete">삭제하기</div> -->
 <!--                 </div> -->
 <!--             </div> -->
@@ -61,7 +60,7 @@
 <!--         <div class="card" style="background-image:url(resources/images/sample/cat_03.png);"> -->
 <!--             <div class="wrap delete"> -->
 <!--                 <div class="center"> -->
-<!--                     <div class="trash"><img src="resources/images/icon/trash.png"></div> -->
+<!--                     <div class="trash"><img src="/resources/images/icon/trash.png"></div> -->
 <!--                     <div class="btn_delete">삭제하기</div> -->
 <!--                 </div> -->
 <!--             </div> -->
@@ -85,7 +84,7 @@
 <!--         <div class="card" style="background-image:url(resources/images/sample/cat_04.png);"> -->
 <!--             <div class="wrap delete"> -->
 <!--                 <div class="center"> -->
-<!--                     <div class="trash"><img src="resources/images/icon/trash.png"></div> -->
+<!--                     <div class="trash"><img src="/resources/images/icon/trash.png"></div> -->
 <!--                     <div class="btn_delete">삭제하기</div> -->
 <!--                 </div> -->
 <!--             </div> -->
@@ -109,7 +108,7 @@
 <!--         <div class="card video" style="background-image:url(resources/images/sample/dog_01.png);"> -->
 <!--             <div class="wrap delete"> -->
 <!--                 <div class="center"> -->
-<!--                     <div class="trash"><img src="resources/images/icon/trash.png"></div> -->
+<!--                     <div class="trash"><img src="/resources/images/icon/trash.png"></div> -->
 <!--                     <div class="btn_delete">삭제하기</div> -->
 <!--                 </div> -->
 <!--             </div> -->
@@ -133,7 +132,7 @@
 <!--         <div class="card" style="background-image:url(resources/images/sample/dog_02.png);"> -->
 <!--             <div class="wrap delete"> -->
 <!--                 <div class="center"> -->
-<!--                     <div class="trash"><img src="resources/images/icon/trash.png"></div> -->
+<!--                     <div class="trash"><img src="/resources/images/icon/trash.png"></div> -->
 <!--                     <div class="btn_delete">삭제하기</div> -->
 <!--                 </div> -->
 <!--             </div> -->
@@ -157,7 +156,7 @@
 <!--         <div class="card" style="background-image:url(resources/images/sample/dog_03.png);"> -->
 <!--             <div class="wrap delete"> -->
 <!--                 <div class="center"> -->
-<!--                     <div class="trash"><img src="resources/images/icon/trash.png"></div> -->
+<!--                     <div class="trash"><img src="/resources/images/icon/trash.png"></div> -->
 <!--                     <div class="btn_delete">삭제하기</div> -->
 <!--                 </div> -->
 <!--             </div> -->
@@ -181,7 +180,7 @@
 <!--         <div class="card" style="background-image:url(resources/images/sample/dog_04.png);"> -->
 <!--             <div class="wrap delete"> -->
 <!--                 <div class="center"> -->
-<!--                     <div class="trash"><img src="resources/images/icon/trash.png"></div> -->
+<!--                     <div class="trash"><img src="/resources/images/icon/trash.png"></div> -->
 <!--                     <div class="btn_delete">삭제하기</div> -->
 <!--                 </div> -->
 <!--             </div> -->
@@ -203,47 +202,26 @@
 <!--             </div> -->
 <!--         </div> -->
     </section>
-<!--     <div class="card_detail"> -->
-<!--         <div class="header"> -->
-<!--             <div class="wrap"> -->
-<!--                 <div class="btn_back"> -->
-<!--                     <img src="resources/images/icon/arrow_left.png"> -->
-<!--                 </div> -->
-<!--                 <div class="page">1/8</div> -->
-<!--             </div> -->
-<!--         </div> -->
-<!--         <div class="article "> -->
-<!--             <div class="image"> -->
-<!--                 <img src="resources/images/sample/long_cat.jpg"> -->
-<!--             </div> -->
-<!--             <div class="content"> -->
-<!--                 <div class="wrap"> -->
-<!--                     <div class="wrap"> -->
-<!--                         야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 -->
-<!--                         야옹 멍 -->
-<!--                         야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 -->
-<!--                         야옹 멍 -->
-<!--                         야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 -->
-<!--                         야옹 멍 -->
-<!--                         야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 -->
-<!--                         야옹 멍 -->
-<!--                         야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 -->
-<!--                         야옹 멍 -->
-<!--                         야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 -->
-<!--                         야옹 멍 -->
-<!--                         야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 -->
-<!--                         야옹 멍 -->
-<!--                         야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 -->
-<!--                         야옹 멍 -->
-<!--                         야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 -->
-<!--                         야옹 멍 -->
-<!--                         야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 야옹 멍 -->
-<!--                         야옹 멍 -->
-<!--                     </div> -->
-<!--                 </div> -->
-<!--             </div> -->
-<!--         </div> -->
-<!--     </div> -->
+	<div class="card_detail">
+		<div class="header">
+			<div class="wrap">
+				<div class="btn_back">
+					<img src="/resources/images/icon/arrow_left.png">
+				</div>
+				<div class="page">1/8</div>
+			</div>
+		</div>
+		<div class="article ">
+			<div class="image">
+				<img src="/resources/images/sample/long_cat.jpg">
+			</div>
+			<div class="content">
+				<div class="wrap">
+					<div class="wrap"></div>
+				</div>
+			</div>
+		</div>
+	</div>
 </article>
 <aside id="detail_edit">
     <div class="wrap">
