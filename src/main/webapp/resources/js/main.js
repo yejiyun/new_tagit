@@ -83,6 +83,7 @@
     $(document).on("click", ".items .item", divDetail);
     
     function divDetail() {
+    	$("header#header").removeClass("open");
     	var itemId = $(this).attr("data-id");
     	
     	var detail = _global.modules.detail.init();
@@ -178,6 +179,7 @@
     }
 
     function asideGet() {
+    	$("header#header").removeClass("open");
         var aside = _global.modules.aside.init();
         aside.find(".header .btn_close").click(function() {
             aside.animate({
