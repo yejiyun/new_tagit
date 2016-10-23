@@ -522,7 +522,7 @@ aside#detail_edit .wrap {
     position: absolute;
     left: 0;
     bottom: 0;
-    width: auto;
+    width: 100%;
     height: auto;
     background-color: transparent;
   }

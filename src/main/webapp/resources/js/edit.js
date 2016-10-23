@@ -1,4 +1,26 @@
 $(function(){
+	$(function(){
+        $.event.special.tap.tapholdThreshold = 500;
+        $.event.special.swipe.durationThreshold = 400;
+    });
+	
+    $(document).on("focus", "aside#detail_edit .txt_memo", function(){
+        $("aside").addClass("keyboard");
+    });
+
+    $(document).on("focusout", "aside#detail_edit .txt_memo", function(){
+        $("aside").removeClass("keyboard");
+    });
+
+    $(document).on("taphold", ".card .tap_holder", function(event){
+        $(this).parents(".card").find(".wrap.delete").addClass("show");
+    });
+    
+    $(document).on("click", ".card .wrap.delete", function(event){
+        event.stopPropagation();
+        $(this).removeClass("show");
+    });
+    
 	$(window).load(function() {
     	// Pre-parsing and Caching Templates
         window._global = {
