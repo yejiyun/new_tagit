@@ -213,7 +213,6 @@ article#main.detail .card_detail .article .content .wrap {
   height: 100%;
 }
 article#main.detail .card_detail .article .content .wrap .wrap {
-  height: calc(12vw + 0.5em);
   position: absolute;
   top:3em;
   overflow: hidden;
@@ -221,6 +220,7 @@ article#main.detail .card_detail .article .content .wrap .wrap {
 article#main.detail .card_detail .article .image ~ .content .wrap .wrap {
   top:auto;
   bottom: 0;
+  height: calc(12vw + 0.5em);
 }
 article#main.detail .card_detail .article .content .wrap .wrap a {
   font-size: 1em;
