@@ -107,7 +107,7 @@
     				console.log(response.data.thumbnail != "");
     				if(response.data.thumbnail == "") {
     					imgPage.text("");
-        				detail.find(".article .image img").attr("src", "/resources/images/sample/no-image.png");
+    					detail.find(".article .image").remove();
     					$("article#main").addClass("detail");
         		    	$("article#main .wrap").append(detail);
     				} else {
