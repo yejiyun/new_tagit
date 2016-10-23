@@ -87,13 +87,36 @@ public class ItemApiController {
 		}
 		res.setState(false);
 		res.setMessage("로그인 상태가 아닙니다.");
-		return res;
-		
+		return res;		
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/item/{id}", method = RequestMethod.GET, produces = "application/json; charset=utf-8")
+	public String getItemById(@PathVariable("id") int id, Model model,HttpSession session, HttpServletResponse response) throws JsonProcessingException {
+		UserModel user = (UserModel)session.getAttribute("session");
+		if(user != null){
+			ItemModel item = itemMapper.selectById(id, user.getUser_id());
+			ObjectMapper objectMapper = new ObjectMapper();
+			HashMap<String, Object> responseMap = new HashMap<String, Object>();
+			
+			if(item == null) {
+				responseMap.put("state", false);
+				responseMap.put("message", "데이터가 없습니다.");
+			} else {
+				responseMap.put("state", true);
+				responseMap.put("message", "성공");
+				
+				responseMap.put("data", item);
+			}
+			
+			return objectMapper.writeValueAsString(responseMap);
+		}
+		return "";
 	}
 	
 	@ResponseBody
 	@RequestMapping(value = "/tag/bundle", method = RequestMethod.POST, produces = "application/json; charset=utf-8")
-	public String mainTiles(@RequestParam("page") int page, Model model,HttpSession session, HttpServletResponse response) throws JsonProcessingException {
+	public String getTagBundleWithPage(@RequestParam("page") int page, Model model,HttpSession session, HttpServletResponse response) throws JsonProcessingException {
 		UserModel user = (UserModel)session.getAttribute("session");
 		if(user != null){			
 			List<UserTagModel> userTagList = userTagMapper.selectByUserWithPaging(user.getUser_id(), page * Const.rowForPage, Const.rowForPage);

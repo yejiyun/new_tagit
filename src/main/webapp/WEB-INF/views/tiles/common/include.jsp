@@ -5,6 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <title>tagTagit, Hashtag has become a part of normal language.it</title>
 <script type="text/javascript" src="/resources/js/lib/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="/resources/js/lib/jquery.mobile.custom.min.js"></script>
 <link rel="stylesheet" href="/resources/css/header.css">
 <link rel="stylesheet" href="/resources/css/lib/bootstrap.css">
 <link rel="stylesheet" href="/resources/css/lib/bootstrap-tokenizer.css">

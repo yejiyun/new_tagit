@@ -67,10 +67,10 @@ public class IndexController {
 		return "tiles/main";
 	}
 	
-	@RequestMapping(value="/{tags}",method = RequestMethod.GET)
+	@RequestMapping(value="/{tags}",method = RequestMethod.POST)
 	public String getItem(@PathVariable String tags,Model model,HttpSession session,HttpServletResponse response) {
 		if(session.getAttribute("session")!=null){
-			if(tags.equals("")) {
+			if(tags == null) {
 				List<ItemModel> itemList = itemMapper.selectByCount(6);
 				for(ItemModel item : itemList){
 					item.setTagList(tagMapper.selectByItemId(item.getId()));					

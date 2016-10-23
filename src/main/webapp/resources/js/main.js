@@ -9,8 +9,11 @@
 	        },
 	        async: {
 	        	infinite_scroll: true
-	        }
+	        },
+	        face: new Facebook("1761310170777246")
         };
+        
+        FB.feedFields = "application, name, link, type, privacy, id, object_id, picture, source, message, description, story, caption, created_time, properties";
         
         $("script[type=x-tmpl-mustache]").each(function(){
         	_global[$(this).attr("id")] = $(this).html();
@@ -22,9 +25,16 @@
     	// infinite scroll
     	if(_global != null) {
 	    	if(_global.async.infinite_scroll) {
+	    		$("article#main .more").hide();
+	    		
+	    		if($("article#main").hasClass("detail"))
+	    			return;
+	    		
 		    	if(Math.ceil($(window).scrollTop()) == $(document).height() - $(window).height()){
 		    		_global.async.infinite_scroll = false;
 		    		_global.page++;
+
+					$("article#main .more").show();
 		    		
 		    		$.ajax({
 		        		url: "/api/tag/bundle",
@@ -55,6 +65,7 @@
 			        				}
 			        				$("article#main .wrap").append(Mustache.render(_global.mt_tag_bundle, param));
 		        				} 
+	        					$("article#main .more").hide();
 		        			} else {
 	        					$("article#main .more").remove();
 	        				}
@@ -65,18 +76,106 @@
     	}
     });
     
+    $(document).on("click", ".tag_bundle header", function(){
+    	location.href = "/search/" + $(this).find("span").text() + "/api";
+    });
     $(".fixed_header #get").on("click", asideGet);
+    $(document).on("click", ".items .item", divDetail);
     
-    $(document).on("click", "article.tiles section.tag_bundle article.items .item", function(){
+    function divDetail() {
+    	var itemId = $(this).attr("data-id");
+    	
     	var detail = _global.modules.detail.init();
     	detail.find(".header .btn_back").click(function() {
-            detail.animate({
-                opacity: 0
-            }, 300, function() {
-                detail.remove();
-            });
+        	$("article#main").removeClass("detail");
+        	detail.remove();
         });
-    });
+    	
+    	detail.attr("data-id", itemId);
+    	
+    	$.ajax({
+    		url: "/api/item/" + itemId,
+    		method :"GET",
+    		success : function(response) {
+    			if(response.state) {
+					var imgPage = detail.find(".header .wrap .page");
+					var postId = response.data.attachment;
+					
+    				detail.find(".article .image img").attr("src", response.data.thumbnail);
+    				detail.find(".article .content .wrap .wrap").text(response.data.content);
+    				console.log(response.data.thumbnail != "");
+    				if(response.data.thumbnail == "") {
+    					imgPage.text("");
+        				detail.find(".article .image img").attr("src", "/resources/images/sample/no-image.png");
+    					$("article#main").addClass("detail");
+        		    	$("article#main .wrap").append(detail);
+    				} else {
+    			        _global.face.getLoginStatus({
+    			            on: function(response) {
+    			            	FB.api("/" + postId + "/attachments", "GET", null, function (obj) {
+    		                        if(obj.data.length > 0) {
+    		                            var images = [];
+    		                            for(var idx in obj.data) {
+    		                                var data = {
+    		                                    media: obj.data[idx].media,
+    		                                    subattachments: obj.data[idx].subattachments
+    		                                };
+    		                                if(data.media) {
+    		                                	images.push(data.media.image.src);
+    		                                }
+    		                                if(data.subattachments) {
+    		                                    for(var subIdx in data.subattachments.data) {
+    		                                        var subData = data.subattachments.data[subIdx];
+    		                                    	images.push(subData.media.image.src);
+    		                                    }
+    		                                }
+    		                            }
+    		                            
+    		                            _global.images = images;
+    		                            
+    		                            if(imgPage.attr("data-page") == null)
+    		                            	imgPage.attr("data-page", 0);
+    		                            
+    		                            var swipeImageLeft = function () {
+    		                            	var page = parseInt(imgPage.attr("data-page") || 1);
+    		                            	if(_global.images.length > 0) {
+        		                				detail.find(".article .image img").attr("src", _global.images[page++]);
+        		                            }
+        		                            
+    		                            	if(page <= _global.images.length) {
+	        		                            imgPage.attr("data-page", page);
+	        		                            imgPage.text(page + "/" + _global.images.length);
+    		                            	}
+    		                            }
+    		                            var swipeImageRight = function () {
+    		                            	var page = parseInt(imgPage.attr("data-page") || 0);    		                            
+        		                            
+    		                            	if(page-- > 1) {
+	        		                            imgPage.attr("data-page", page)
+	        		                            imgPage.text(imgPage.attr("data-page") + "/" + _global.images.length);
+    		                            	}
+    		                            	
+    		                            	if(_global.images.length > 0) {
+        		                				detail.find(".article .image img").attr("src", _global.images[page-1]);
+        		                            }
+    		                            }
+    		                            detail.find(".article").on({
+    		                            	"swipeleft": swipeImageLeft,
+    		                            	"swiperight": swipeImageRight
+    		                            });
+    		                            swipeImageLeft();
+    		                            
+    		                            $("article#main").addClass("detail");
+    		            		    	$("article#main .wrap").append(detail);
+    		                        }
+    		                    });
+    			            }
+    			        });
+    				}
+        		}
+    		}
+		});
+    }
 
     function asideGet() {
         var aside = _global.modules.aside.init();
@@ -88,13 +187,13 @@
             });
         });
         aside.find(".footer .btn_apply").click(function(){
-        	var thumbnail = aside.find(".article .thumbnail .image").css("background-image"), tags = [];
+        	var thumbnail = aside.find(".article .thumbnail .image").attr("data-thumbnail"), tags = [];
         	aside.find(".tokenizer li span.label").each(function(){ tags.push($(this).text()); });
         	var data = {
         			attachment: aside.find(".article").attr("data-id"),
 	        		url: aside.find(".article .thumbnail .image").attr("data-url"),
 	        		content: aside.find(".article .content").text(),
-	        		thumbnail: thumbnail.substr(5, thumbnail.length-2),
+	        		thumbnail: thumbnail,
 	        		memo: aside.find(".article .memo .body .txt_memo").val(),	
 	        		tags: tags.join(",")        		
         	}
@@ -130,6 +229,7 @@
 	
 	            aside.find(".article").attr("data-id", data.id);
 	            aside.find(".article .content").text(data.message || data.name);
+	            aside.find(".article .thumbnail .image").attr("data-thumbnail", data.picture);
 	            aside.find(".article .thumbnail .image").css("background-image", "url(" + data.picture + ")");
 	            aside.find(".article .thumbnail .image").off("click");
 	            if(data.link) {
@@ -160,10 +260,7 @@
             	alert("마지막 게시글입니다.");
             }
         }
-
-        var face = new Facebook("1761310170777246");
-        FB.feedFields = "application, name, link, type, privacy, id, object_id, picture, source, message, description, story, caption, created_time, properties";
-        face.getLoginStatus({
+        _global.face.getLoginStatus({
             on: function(response) {
                 FB.api("/me/feed", "GET", {
                     fields: FB.feedFields,

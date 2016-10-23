@@ -2,6 +2,8 @@ package com.nexters.tagit.mapper;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.nexters.tagit.model.ItemModel;
 import com.nexters.tagit.model.ItemTag;
 
@@ -10,6 +12,7 @@ public interface ItemMapper {
 	void insert(ItemModel itemModel);
 	ItemModel selectByTagId(int tag_id);
 	ItemModel selectByItemId(int id);
+	ItemModel selectById(@Param("id") int id, @Param("user_id") String user_id);
 	List<ItemModel> selectByCount(int count);
 	List<ItemModel> selectByItemTag(int tag_id);
 	void insertItemTag(ItemTag itemTag);

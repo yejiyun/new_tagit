@@ -25,9 +25,7 @@
 		<section class="tag_bundle">
 			<header>
 				<img src="resources/images/icon/get_memo_sharp.png"/>
-			
-		           <a>${tag.get('name')}</a>
-		        
+				<span>${tag.get('name')}</span>
 			</header>
 			<c:set var="size" value="${tag.get('list').size()}" />
 			<c:choose>
