@@ -171,18 +171,6 @@ public class ItemApiController {
 		return "";
 	}
 	
-	@ResponseBody
-	@RequestMapping(value = "/item/{id}",method = RequestMethod.GET)
-	public ItemModel getItem(@PathVariable String id,HttpSession session){
-		UserModel user = (UserModel)session.getAttribute("session");
-		if(user != null){
-			ItemModel item = itemMapper.selectByMyItemId(Integer.parseInt(id), user.getUser_id());
-			item.setTagList(tagMapper.selectByItemId(item.getId()));
-			return item;
-		}
-		return null;
-		
-	}
 	
 	@ResponseBody
 	@RequestMapping(value = "/tag/bundle", method = RequestMethod.POST, produces = "application/json; charset=utf-8")

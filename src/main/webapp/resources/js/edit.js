@@ -7,7 +7,7 @@ $(function(){
     		method :"GET",
     		success : function(response) {
     			if(response!=null){
-    				item = response;
+    				item = response.data;
     				addData(item);
     			}
     		}
