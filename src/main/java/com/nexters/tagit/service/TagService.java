@@ -11,12 +11,7 @@ import org.springframework.stereotype.Service;
 import com.nexters.tagit.mapper.TagMapper;
 import com.nexters.tagit.model.TagModel;
 
-/**
- * tag 비즈니스 로직
- * 
- * @author madplay
- * created on 2016. 8. 21.
- */
+
 @Service
 public class TagService {
 

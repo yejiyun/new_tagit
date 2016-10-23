@@ -1,10 +1,6 @@
 package com.nexters.tagit.model;
 
-/**
- * tag 테이블의 맵핑 모델
- * 
- * @author madplay created on 2016. 8. 21.
- */
+
 public class TagModel {
 	private int id;
 	private String content;

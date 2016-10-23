@@ -45,4 +45,13 @@
 		<url-pattern>/*</url-pattern>
 		<url-pattern>*.json</url-pattern>
 	</filter-mapping>
+	
+	<filter>
+      <filter-name>corsFilter</filter-name>
+      <filter-class>com.nexters.tagit.utils.CorsFilter</filter-class> <!-- 필터위치 -->
+  </filter>
+  <filter-mapping>
+      <filter-name>corsFilter</filter-name>
+      <url-pattern>/*</url-pattern> <!-- 서비스할 디렉토리 설정 -->
+  </filter-mapping>
 </web-app>

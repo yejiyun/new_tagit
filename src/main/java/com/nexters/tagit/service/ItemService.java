@@ -1,23 +1,21 @@
 package com.nexters.tagit.service;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.TransactionDefinition;
+import org.springframework.transaction.TransactionStatus;
+import org.springframework.transaction.support.DefaultTransactionDefinition;
 
 import com.nexters.tagit.mapper.ItemMapper;
 import com.nexters.tagit.model.ItemModel;
 import com.nexters.tagit.model.ItemTag;
 import com.nexters.tagit.model.TagModel;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.transaction.interceptor.TransactionAspectSupport;
 
-/**
- * item 비즈니스 로직
- * 
- * @author madplay
- * created on 2016. 8. 21.
- */
 @Service
 public class ItemService {
 	
@@ -33,6 +31,22 @@ public class ItemService {
 		
 		return itemMapper.selectByItemTagId(idList);
 	}
+	
+	@Transactional
+	public int delete(int id){
+			try{
+				itemMapper.delete(id);
+				itemMapper.deleteItemTag(id);
+				
+	        return 200;
+	    } catch(Exception e) {
+	    		e.printStackTrace();
+	            TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
+	            return 500;
+	    }
+	        
+    }
+	
 	
 	public List<ItemModel> getItemListByKeyword(String keyword) {
 		return itemMapper.selectItemListByKeyword(keyword);

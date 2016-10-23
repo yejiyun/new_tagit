@@ -18,7 +18,7 @@
 		from item_tag
 		where tag_id = #{tag_id}
 		limit 1
-		)
+		) 
 		
 	</select>
 	<select id="selectByCount" parameterType="int" resultType="com.nexters.tagit.model.ItemModel">
@@ -33,6 +33,7 @@
 		<foreach collection="list" item="id"  open="(" close=")" separator=",">
             #{id}
         </foreach>
+        
 		
 		
 	</select>
@@ -46,6 +47,14 @@
 		select *
 		from item
 		where id = #{id}
+		
+	</select>
+	
+	<select id="selectByMyItemId" parameterType="map" resultType="com.nexters.tagit.model.ItemModel">
+		select *
+		from item
+		where id = #{id}
+		and user_id = #{user_id}
 	</select>
 	
 	<insert id="insert" useGeneratedKeys="true" keyProperty="id">
@@ -56,4 +65,19 @@
 		insert into item_tag
 		values(#{item_id},#{tag_id})
 	</insert>
+	<update id ="update" parameterType="map">
+		update item
+		set memo = #{memo}
+		where id = #{id}
+	</update>
+	<delete id="delete" parameterType="int">
+		delete
+		from item
+		where id = #{id}
+	</delete>
+	<delete id="deleteItemTag" parameterType="int">
+		delete
+		from item_tag
+		where item_id = #{id}
+	</delete>
 </mapper>

@@ -3,11 +3,7 @@ package com.nexters.tagit.model;
 import java.util.Date;
 import java.util.List;
 
-/**
- * item 테이블의 맵핑 모델
- * 
- * @author madplay created on 2016. 8. 21.
- */
+
 public class ItemModel {
 	private int id;
 	private String url;

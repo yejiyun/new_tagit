@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -30,6 +31,9 @@ import com.nexters.tagit.model.TagModel;
 import com.nexters.tagit.model.UserModel;
 import com.nexters.tagit.model.UserTagModel;
 import com.nexters.tagit.service.AuthService;
+import com.nexters.tagit.service.ItemService;
+import com.nexters.tagit.service.SearchService;
+import com.nexters.tagit.service.TagService;
 import com.nexters.tagit.utils.Const;
 
 @Controller
@@ -40,6 +44,59 @@ public class ItemApiController {
 	@Autowired ItemMapper itemMapper;
 	@Autowired TagMapper tagMapper;
 	@Autowired UserTagMapper userTagMapper;	
+	
+	@Autowired
+	private ItemService itemService;
+	
+	@Autowired
+	private TagService tagService;
+	@Autowired
+	private SearchService searchService;
+	
+	@RequestMapping(value="/item/{id}/{keyword}/update", method = RequestMethod.POST)
+	public ModelAndView update(@PathVariable String id,
+			@RequestParam String memo,@PathVariable String keyword,HttpSession session) {
+		ModelAndView mav = new ModelAndView("tiles/list");
+		
+		itemMapper.update(memo, Integer.parseInt(id));
+		
+		UserModel user = (UserModel)session.getAttribute("session");
+		searchService.checkUp(keyword,user.getUser_id());
+		List<ItemTag> itemTag = itemService.getItemTagByTagId(tagService.selectByContentList(keyword));
+		List<ItemModel> itemList = new ArrayList<ItemModel>();
+		for(ItemTag userTag : itemTag){
+			ItemModel item = itemMapper.selectByMyItemId(userTag.getItem_id(),user.getUser_id());
+			item.setTagList(tagMapper.selectByItemId(userTag.getItem_id()));
+			itemList.add(item);
+		}
+		mav.addObject("itemList",itemList);		
+		return mav;
+	} 
+	
+	
+	@RequestMapping(value="/item/{id}/{keyword}/del", method = RequestMethod.GET)
+	public ModelAndView delete(
+			@PathVariable String id,@PathVariable String keyword,HttpSession session) {
+		ModelAndView mav = new ModelAndView("tiles/list");
+		
+		if(itemService.delete(Integer.parseInt(id))==200){
+			mav.addObject("msg", "success");
+		}
+		else{
+			mav.addObject("msg","fail");
+		}
+		UserModel user = (UserModel)session.getAttribute("session");
+		searchService.checkUp(keyword,user.getUser_id());
+		List<ItemTag> itemTag = itemService.getItemTagByTagId(tagService.selectByContentList(keyword));
+		List<ItemModel> itemList = new ArrayList<ItemModel>();
+		for(ItemTag userTag : itemTag){
+			ItemModel item = itemMapper.selectByMyItemId(userTag.getItem_id(),user.getUser_id());
+			item.setTagList(tagMapper.selectByItemId(userTag.getItem_id()));
+			itemList.add(item);
+		}
+		mav.addObject("itemList",itemList);		
+		return mav;
+	} 
 	
 	@ResponseBody
 	@RequestMapping(value = "/item/add", method = RequestMethod.POST)
@@ -88,6 +145,19 @@ public class ItemApiController {
 		res.setState(false);
 		res.setMessage("로그인 상태가 아닙니다.");
 		return res;
+		
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/item/{id}",method = RequestMethod.GET)
+	public ItemModel getItem(@PathVariable String id,HttpSession session){
+		UserModel user = (UserModel)session.getAttribute("session");
+		if(user != null){
+			ItemModel item = itemMapper.selectByMyItemId(Integer.parseInt(id), user.getUser_id());
+			item.setTagList(tagMapper.selectByItemId(item.getId()));
+			return item;
+		}
+		return null;
 		
 	}
 	

@@ -33,7 +33,11 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
-		
+		<dependency>
+                    <groupId>org.springframework</groupId>
+                    <artifactId>spring-tx</artifactId>
+                    <version>${spring.version}</version>
+        </dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-core</artifactId>
@@ -172,6 +176,8 @@
 			<version>${jackson.version}</version>
 		</dependency>
 		
+		
+		
 	
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
@@ -189,6 +195,24 @@
 		    <artifactId>json</artifactId>
 		    <version>20160810</version>
 		</dependency>
+		
+		<!-- Transaction -->
+		<dependency>
+			<groupId>org.aspectj</groupId>
+				<artifactId>aspectjweaver</artifactId>
+				<version>1.6.11</version>
+			</dependency>
+			<dependency>
+				<groupId>org.aspectj</groupId>
+				<artifactId>aspectjrt</artifactId>
+			<version>1.6.8</version>
+		 </dependency>
+		 <dependency>
+			<groupId>cglib</groupId>
+			<artifactId>cglib</artifactId>
+			<version>2.2.2</version>
+		</dependency>
+		 
 	</dependencies>
 	
 	<build>

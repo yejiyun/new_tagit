@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.nexters.tagit.mapper.ItemMapper;
 import com.nexters.tagit.mapper.SearchMapper;
 import com.nexters.tagit.mapper.TagMapper;
@@ -69,6 +70,8 @@ public class IndexController {
 	
 	@RequestMapping(value="/{tags}",method = RequestMethod.GET)
 	public String getItem(@PathVariable String tags,Model model,HttpSession session,HttpServletResponse response) {
+		ObjectMapper objectMapper = new ObjectMapper();
+		UserModel user = (UserModel)session.getAttribute("session");
 		if(session.getAttribute("session")!=null){
 			if(tags.equals("")) {
 				List<ItemModel> itemList = itemMapper.selectByCount(6);
@@ -80,13 +83,17 @@ public class IndexController {
 				List<ItemTag> itemTag = itemService.getItemTagByTagId(tagService.selectByContentList(tags));
 				List<ItemModel> itemList = new ArrayList<ItemModel>();
 				for(ItemTag userTag : itemTag){
-					ItemModel item = itemMapper.selectByItemId(userTag.getItem_id());
-					item.setTagList(tagMapper.selectByItemId(userTag.getItem_id()));
+					ItemModel item = itemMapper.selectByMyItemId(userTag.getItem_id(),user.getUser_id());
+					if(item!=null){
+						item.setTagList(tagMapper.selectByItemId(userTag.getItem_id()));
+					}
+					
 					itemList.add(item);
 				}
 				model.addAttribute("itemList",itemList);
 			}
 		}
+		
 		return "tiles/list";
 	}
 }
