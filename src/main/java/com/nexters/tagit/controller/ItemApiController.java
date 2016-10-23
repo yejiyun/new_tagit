@@ -186,7 +186,6 @@ public class ItemApiController {
 		UserModel user = (UserModel)session.getAttribute("session");
 		if(user != null){
 			ItemModel item = itemMapper.selectById(id, user.getUser_id());
-			item.setTagList(tagMapper.selectByItemId(item.getId()));
 			ObjectMapper objectMapper = new ObjectMapper();
 			HashMap<String, Object> responseMap = new HashMap<String, Object>();
 			
