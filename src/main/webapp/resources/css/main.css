@@ -215,8 +215,12 @@ article#main.detail .card_detail .article .content .wrap {
 article#main.detail .card_detail .article .content .wrap .wrap {
   height: calc(12vw + 0.5em);
   position: absolute;
-  bottom: 0;
+  top:3em;
   overflow: hidden;
+}
+article#main.detail .card_detail .article .image ~ .content .wrap .wrap {
+  top:auto;
+  bottom: 0;
 }
 article#main.detail .card_detail .article .content .wrap .wrap a {
   font-size: 1em;

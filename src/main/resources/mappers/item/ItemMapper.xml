@@ -47,7 +47,6 @@
 		select *
 		from item
 		where id = #{id}
-		
 	</select>
 	
 	<select id="selectByMyItemId" parameterType="map" resultType="com.nexters.tagit.model.ItemModel">
@@ -56,7 +55,13 @@
 		where id = #{id}
 		and user_id = #{user_id}
 	</select>
-	
+	<select id="selectById" resultType="com.nexters.tagit.model.ItemModel">
+		select *
+		from item
+		where id = #{id}
+		and user_id = #{user_id}
+	</select>
+		
 	<insert id="insert" useGeneratedKeys="true" keyProperty="id">
 		insert into item(url,create_time,thumbnail,content,user_id,attachment,memo)
 		values(#{url},now(),#{thumbnail},#{content},#{user_id},#{attachment},#{memo})

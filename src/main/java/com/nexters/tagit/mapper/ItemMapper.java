@@ -13,6 +13,7 @@ public interface ItemMapper {
 	ItemModel selectByTagId(int tag_id);
 	ItemModel selectByItemId(int id);
 	ItemModel selectByMyItemId(@Param("id") int id,@Param("user_id") String user_id);
+	ItemModel selectById(@Param("id") int id, @Param("user_id") String user_id);
 	List<ItemModel> selectByCount(int count);
 	List<ItemModel> selectByItemTag(int tag_id);
 	void insertItemTag(ItemTag itemTag);
