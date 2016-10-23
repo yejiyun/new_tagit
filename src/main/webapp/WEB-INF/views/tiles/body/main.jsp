@@ -52,7 +52,7 @@
 	     </section>
 	     </c:forEach>
 	</div>
-	<div class="more">불러오는중...</div>
+	<div class="scroll more">불러오는중...</div>
 	<div class="card_detail">
 		<div class="header">
 			<div class="wrap">

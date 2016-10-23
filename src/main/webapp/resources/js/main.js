@@ -25,7 +25,7 @@
     	// infinite scroll
     	if(_global != null) {
 	    	if(_global.async.infinite_scroll) {
-	    		$("article#main .more").hide();
+	    		$("article#main .scroll.more").hide();
 	    		
 	    		if($("article#main").hasClass("detail"))
 	    			return;
@@ -34,14 +34,13 @@
 		    		_global.async.infinite_scroll = false;
 		    		_global.page++;
 
-					$("article#main .more").show();
+					$("article#main .scroll.more").show();
 		    		
 		    		$.ajax({
 		        		url: "/api/tag/bundle",
 		        		method :"POST",
 		        		data : {"page": _global.page},
 		        		success : function(response) {
-		        			console.log(response);
 		        			if(response.state) {
 		        				var data = response.data, size;
 		        				_global.async.infinite_scroll = true;
@@ -65,9 +64,9 @@
 			        				}
 			        				$("article#main .wrap").append(Mustache.render(_global.mt_tag_bundle, param));
 		        				} 
-	        					$("article#main .more").hide();
+	        					$("article#main .scroll.more").hide();
 		        			} else {
-	        					$("article#main .more").remove();
+	        					$("article#main .scroll.more").remove();
 	        				}
 		        		}
 					});
@@ -104,7 +103,6 @@
 					
     				detail.find(".article .image img").attr("src", response.data.thumbnail);
     				detail.find(".article .content .wrap .wrap").text(response.data.content);
-    				console.log(response.data.thumbnail != "");
     				if(response.data.thumbnail == "") {
     					imgPage.text("");
     					detail.find(".article .image").remove();
@@ -164,7 +162,12 @@
     		                            	"swipeleft": swipeImageLeft,
     		                            	"swiperight": swipeImageRight
     		                            });
-    		                            swipeImageLeft();
+    		                            swipeImageLeft();    		                            
+
+    		            				detail.find(".article .content .wrap .wrap").on("click", function(){
+    		            					var article = $(this).parents(".article");
+    		            					article.toggleClass("more");
+    		            				});
     		                            
     		                            $("article#main").addClass("detail");
     		            		    	$("article#main .wrap").append(detail);
@@ -217,13 +220,13 @@
 			});
         });
         aside.find(".tokenizer").remove();
+        aside.find(".txt_tags").attr("value", "왜,안되,지?");
         aside.find(".txt_tags").tokenizer();
 
         aside.addClass("show");
 
         var setFeed = function(feed) {
             var data = feed.data[0];
-            console.log(data);
 	        if(feed.data.length) {
 	            
 	            if(!data.picture)
