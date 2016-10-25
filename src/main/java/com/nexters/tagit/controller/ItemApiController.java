@@ -54,12 +54,18 @@ public class ItemApiController {
 	private SearchService searchService;
 	
 	@ResponseBody
-	@RequestMapping(value="/item/{keyword}/update", method = RequestMethod.POST)
-	public Response update(ItemModel item,@RequestParam("tags") String tags,
-			@PathVariable String keyword,HttpSession session) {
+	@RequestMapping(value="/item/update", method = RequestMethod.POST)
+	public Response update(@RequestParam("memo") String memo,
+			@RequestParam("tags") String tags,@RequestParam("id") String id,
+		HttpSession session) {
 		Response res = new Response();
+		System.out.println(tags);
+		System.out.println(id);
+		System.out.println(memo);
 		if(session.getAttribute("session")!=null){
 			UserModel user = (UserModel)session.getAttribute("session");
+			ItemModel item = itemMapper.selectById(Integer.parseInt(id), user.getUser_id());
+			item.setMemo(memo);
 			itemMapper.update(item);
 			itemMapper.deleteItemTag(item.getId());
 			String[] tagList = tags.split(",");
@@ -95,7 +101,7 @@ public class ItemApiController {
 			}
 			
 			res.setState(true);
-			res.setMessage("Item 삽입 하였습니다.");
+			res.setMessage("Item 업데이트성공.");
 			return res;
 			
 		}

@@ -22,12 +22,13 @@
 <article id="main" class="tiles">	
 	<div class="wrap">
 		<c:forEach var="tag" items="${tagBundles}" varStatus="loop"> 
+		<c:set var="size" value="${tag.get('list').size()}" />
 		<section class="tag_bundle">
 			<header>
 				<img src="resources/images/icon/get_memo_sharp.png"/>
 				<span>${tag.get('name')}</span>
 			</header>
-			<c:set var="size" value="${tag.get('list').size()}" />
+			
 			<c:choose>
 			    <c:when test="${size < 2}">
 			        <c:set var="size" value="01" />
@@ -44,13 +45,15 @@
 			</c:choose>
 			<article class="items layout_${size}">
 				<c:forEach var="item" items="${tag.get('list')}" varStatus="loop"> 
+				<c:if test="${item.id ne null}">
 					<div class="item" data-id="${item.id}" style="background-image:url(${item.thumbnail});">
 						<div class="contents"><pre>${item.content}</pre></div>
 					</div>
+				</c:if>
 				</c:forEach>
 			</article>
 	     </section>
-	     </c:forEach>
+		 </c:forEach>
 	</div>
 	<div class="scroll more">불러오는중...</div>
 	<div class="card_detail">

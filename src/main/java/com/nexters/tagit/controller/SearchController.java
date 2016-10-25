@@ -60,6 +60,7 @@ public class SearchController {
 			
 		}
 		mav.addObject("itemList",itemList);
+		mav.addObject("keyword",keyword);
 		return mav;
 	}
 	
