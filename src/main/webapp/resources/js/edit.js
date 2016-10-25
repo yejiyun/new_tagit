@@ -47,6 +47,101 @@ $(function(){
         });
     });
 	
+	function divDetail() {
+    	$("header#header").removeClass("open");
+    	
+    	var detail = _global.modules.detail.init();
+    	detail.find(".header .btn_back").click(function() {
+        	detail.remove();
+        });
+    	
+    	detail.attr("data-id", itemId);
+    	$.ajax({
+    		url: "/api/item/" + itemId,
+    		method :"GET",
+    		success : function(response) {
+    			if(response.state) {
+					var imgPage = detail.find(".header .wrap .page");
+					var postId = response.data.attachment;
+					
+    				detail.find(".article .image img").attr("src", response.data.thumbnail);
+    				detail.find(".article .content .wrap .wrap").text(response.data.content);
+    				if(response.data.thumbnail == "") {
+    					imgPage.text("");
+    					detail.find(".article .image").remove();
+    					$("article#main").addClass("detail");
+        		    	$("article#main .wrap").append(detail);
+    				} else {
+    			        _global.face.getLoginStatus({
+    			            on: function(response) {
+    			            	FB.api("/" + postId + "/attachments", "GET", null, function (obj) {
+    		                        if(obj.data.length > 0) {
+    		                            var images = [];
+    		                            for(var idx in obj.data) {
+    		                                var data = {
+    		                                    media: obj.data[idx].media,
+    		                                    subattachments: obj.data[idx].subattachments
+    		                                };
+    		                                if(data.media) {
+    		                                	images.push(data.media.image.src);
+    		                                }
+    		                                if(data.subattachments) {
+    		                                    for(var subIdx in data.subattachments.data) {
+    		                                        var subData = data.subattachments.data[subIdx];
+    		                                    	images.push(subData.media.image.src);
+    		                                    }
+    		                                }
+    		                            }
+    		                            
+    		                            _global.images = images;
+    		                            
+    		                            if(imgPage.attr("data-page") == null)
+    		                            	imgPage.attr("data-page", 0);
+    		                            
+    		                            var swipeImageLeft = function () {
+    		                            	var page = parseInt(imgPage.attr("data-page") || 1);
+    		                            	if(_global.images.length > 0) {
+        		                				detail.find(".article .image img").attr("src", _global.images[page++]);
+        		                            }
+        		                            
+    		                            	if(page <= _global.images.length) {
+	        		                            imgPage.attr("data-page", page);
+	        		                            imgPage.text(page + "/" + _global.images.length);
+    		                            	}
+    		                            }
+    		                            var swipeImageRight = function () {
+    		                            	var page = parseInt(imgPage.attr("data-page") || 0);    		                            
+        		                            
+    		                            	if(page-- > 1) {
+	        		                            imgPage.attr("data-page", page)
+	        		                            imgPage.text(imgPage.attr("data-page") + "/" + _global.images.length);
+    		                            	}
+    		                            	
+    		                            	if(_global.images.length > 0) {
+        		                				detail.find(".article .image img").attr("src", _global.images[page-1]);
+        		                            }
+    		                            }
+    		                            detail.find(".article").on({
+    		                            	"swipeleft": swipeImageLeft,
+    		                            	"swiperight": swipeImageRight
+    		                            });
+    		                            swipeImageLeft();    		                            
+
+    		            				detail.find(".article .content .wrap .wrap").on("click", function(){
+    		            					var article = $(this).parents(".article");
+    		            					article.toggleClass("more");
+    		            				});
+    		                            
+    		                        }
+    		                    });
+    			            }
+    			        });
+    				}
+        		}
+    		}
+		});
+    }
+	
 	var addData = function(){
 		var itemId = $(this).parents(".card").attr("data-id");
 		$.ajax({
@@ -94,6 +189,7 @@ $(function(){
 	
 	$(document).on("click", "article#list .cards .card .detail", addData);
 	
+<<<<<<< HEAD
 	$(document).on("click", "aside#detail_edit .footer .btn_apply", function(){
 			var aside = _global.modules.aside.init();
 	        var id = $('div[data-id]').attr('data-id');
@@ -127,4 +223,7 @@ $(function(){
 	});
 	
 	
+=======
+
+>>>>>>> e8cff1804b577494c1692dafbd08bb62051ee6d3
 });
