@@ -286,6 +286,39 @@ $(function(){
 		});
 	}
 	
+	$(document).on("click", "aside#detail_edit .footer .btn_apply", function(){
+		var aside = _global.modules.aside_detail.init();
+        var id = $('div[data-id]').attr('data-id');
+        var tags = [];
+        var memo = $('textarea').val();
+        //aside.find(".tokenizer li span.label").each(function(){ tags.push($(this).text()); });
+    	$('.tokenizer li span.label').each(function(){ tags.push($(this).text()); });
+        var data = {
+        		memo: memo,	
+        		tags: tags.join(","),
+        		id : id,
+        		
+    	}
+    	console.log(data);
+    	
+    	$.ajax({
+    		url: "/api/item/update",
+    		method :"POST",
+    		data : data,
+    		success : function(response) {
+    			if(response.state) {
+    				window.location.reload(true);
+        			//$("aside").removeClass("show");
+        		}
+        		
+        		
+    		}
+		});
+		
+		
+    	
+        
+});
 	$(document).on("click", "article#list .cards .card .detail", addData);
     $(".fixed_header #get").on("click", asideGet);
     $(document).on("click", "article#list .cards .card .tap_holder", divDetail);

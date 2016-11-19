@@ -70,7 +70,7 @@ public class IndexController {
 		}
 		return "tiles/main";
 	}
-	
+	/*
 	@RequestMapping(value="/{tags}",method = RequestMethod.POST)
 	public String getItem(@PathVariable String tags,Model model,HttpSession session,HttpServletResponse response) {
 		ObjectMapper objectMapper = new ObjectMapper();
@@ -99,4 +99,5 @@ public class IndexController {
 		
 		return "tiles/list";
 	}
+	*/
 }

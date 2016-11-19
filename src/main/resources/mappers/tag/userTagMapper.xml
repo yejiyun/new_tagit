@@ -18,6 +18,11 @@
 		from user_tag
 		where user_id = #{user_id} and tag_id = #{tag_id}
 	</select>
+	<select id="selectByUserId" parameterType="String" resultType="com.nexters.tagit.model.UserTagModel">
+		select t.*
+		from user_tag u join tag t on u.tag_id = t.id
+		where u.user_id = #{user_id}
+	</select>
 	<select id="selectByUserWithPaging" resultType="com.nexters.tagit.model.UserTagModel">
 		select * from user_tag
 		where user_id = '${user_id}'

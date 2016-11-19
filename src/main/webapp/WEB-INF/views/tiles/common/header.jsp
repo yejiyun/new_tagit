@@ -19,7 +19,12 @@
 		
 		$("#search").click(function(){
 			if($("#header").hasClass("open")){
-				location.href = "/search/"+$(".span4").val();
+				if($(".span4").val()==''){
+					location.href = "/"
+				}else{
+					location.href = "/search/"+$(".span4").val();
+				}
+				
 			}
 			$("#header").toggleClass("open");
 			

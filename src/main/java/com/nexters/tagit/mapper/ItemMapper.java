@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Param;
 
 import com.nexters.tagit.model.ItemModel;
 import com.nexters.tagit.model.ItemTag;
+import com.nexters.tagit.model.TagModel;
 
 public interface ItemMapper {
 	List<ItemModel> selectItemListByKeyword(String keyword);

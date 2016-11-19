@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
-
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -49,11 +49,16 @@ public class SearchController {
 			ModelAndView mav = new ModelAndView("login");
 			return mav;
 		}
+		
 		ModelAndView mav = new ModelAndView("tiles/list");
 		ObjectMapper objectMapper = new ObjectMapper();
 		System.out.println(keyword);
 		searchService.checkUp(keyword,user.getUser_id());
-		List<ItemTag> itemTag = itemService.getItemTagByTagId(tagService.selectByContentList(keyword));
+		List<TagModel> tm = tagService.selectByContentList(keyword);
+		if(tm.get(0)==null){
+			return mav;
+		}
+		List<ItemTag> itemTag = itemService.getItemTagByTagId(tm);
 		List<ItemModel> itemList = new ArrayList<ItemModel>();
 		for(ItemTag userTag : itemTag){
 			ItemModel item = itemMapper.selectByMyItemId(userTag.getItem_id(),user.getUser_id());

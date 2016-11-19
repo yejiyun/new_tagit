@@ -114,6 +114,10 @@ public class ItemApiController {
 	@RequestMapping(value="/item/{id}/{keyword}/del", method = RequestMethod.GET)
 	public ModelAndView delete(
 			@PathVariable String id,@PathVariable String keyword,HttpSession session) {
+		if(session.getAttribute("session")==null){
+			ModelAndView mav = new ModelAndView("login");
+			return mav;
+		}
 		ModelAndView mav = new ModelAndView("tiles/list");
 		
 		if(itemService.delete(Integer.parseInt(id))==200){
@@ -190,6 +194,9 @@ public class ItemApiController {
 	@RequestMapping(value = "/item/{id}", method = RequestMethod.GET, produces = "application/json; charset=utf-8")
 	public String getItemById(@PathVariable("id") int id, Model model,HttpSession session, HttpServletResponse response) throws JsonProcessingException {
 		UserModel user = (UserModel)session.getAttribute("session");
+		if(user==null){
+			return "login";
+		}
 		if(user != null){
 			ItemModel item = itemMapper.selectById(id, user.getUser_id());
 			item.setTagList(tagMapper.selectByItemId(item.getId()));
