@@ -4,7 +4,7 @@
 %><%@ taglib prefix="fn"  uri="http://java.sun.com/jsp/jstl/functions" %>
 <link rel="stylesheet" href="/resources/css/list.css">
 <script type="text/javascript" src="/resources/js/edit.js"></script>
-
+<input id="keyword" type="hidden" value="${keyword}"/>
 <article id="list" class="tiles">
     <section class="cards layout_02">
     	<c:forEach var="item" items="${itemList}" varStatus="loop">

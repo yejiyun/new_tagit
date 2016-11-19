@@ -4,6 +4,7 @@ $(function(){
         $.event.special.swipe.durationThreshold = 400;
     });
 	
+	
     $(document).on("focus", "aside#detail_edit .txt_memo", function(){
         $("aside").addClass("keyboard");
     });
@@ -18,6 +19,9 @@ $(function(){
     
     $(document).on("click", ".card .wrap.delete", function(event){
         event.stopPropagation();
+        var keyword = $('#keyword').val();
+        var id = $('div[data-id]').attr('data-id');
+        location.href="/api/item/"+id+"/"+keyword+"/del";
         $(this).removeClass("show");
     });
     
@@ -162,6 +166,7 @@ $(function(){
     		        });
     		        
     		        aside.find(".article").attr("data-id", data.id);
+    	            aside.find(".article .memo .body .txt_memo").text(data.memo);
     	            aside.find(".article .content").text(data.content);
     	            aside.find(".article .thumbnail .image").attr("data-thumbnail", data.thumbnail);
     	            aside.find(".article .thumbnail .image").css("background-image", "url(" + data.thumbnail + ")");
@@ -187,6 +192,7 @@ $(function(){
 	}
 	
 	$(document).on("click", "article#list .cards .card .detail", addData);
+
 
     $(document).on("click", "article#list .cards .card .tap_holder", divDetail);
 	

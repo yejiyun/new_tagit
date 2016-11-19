@@ -28,7 +28,7 @@ public class ItemService {
 		for(TagModel tm : list){	
 		  idList.add(tm.getId());
 		}
-		
+		System.out.println(idList.toString());
 		return itemMapper.selectByItemTagId(idList);
 	}
 	
