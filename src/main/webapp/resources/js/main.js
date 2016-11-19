@@ -194,7 +194,8 @@
             aside.animate({
                 opacity: 0
             }, 300, function() {
-                aside.remove();
+            	//aside.remove();
+				location.reload();
             });
         });
         aside.find(".footer .btn_apply").click(function(){
@@ -208,6 +209,10 @@
 	        		memo: aside.find(".article .memo .body .txt_memo").val(),	
 	        		tags: tags.join(",")        		
         	}
+			if(tags.length <= 0) {
+				alert("태그를 1개 이상 지정 해주셔야 합니다.");
+				return false;
+			}
         	$.ajax({
         		url: "/api/item/add",
         		method :"POST",
@@ -233,6 +238,17 @@
         var setFeed = function(feed) {
             var data = feed.data[0];
 	        if(feed.data.length) {
+				if (aside.find(".txt_tags").attr("value") != ""
+						|| aside.find(".txt_memo").val() != "") {
+					if(confirm("작성하던 내용이 존재 합니다.\n무시하고 진행 하시곘습니까?")) {
+						aside.find(".txt_tags").attr("value", "");
+						aside.find(".tokenizer li span.label").each(function() {
+							$(this).parent().remove();
+						});
+						aside.find(".txt_memo").val("");
+					}
+					return false;
+				}
 	            
 	            if(!data.picture)
 	            	data.picture = "/resources/images/sample/no-image.png";
