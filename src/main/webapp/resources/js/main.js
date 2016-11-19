@@ -86,12 +86,16 @@
     	var itemId = $(this).attr("data-id");
     	
     	var detail = _global.modules.detail.init();
+    	
+    	detail.attr("scroll_top", $(window).scrollTop());
     	detail.find(".header .btn_back").click(function() {
         	$("article#main").removeClass("detail");
+        	$(window).scrollTop(detail.attr("scroll_top"));
         	detail.remove();
         });
     	
     	detail.attr("data-id", itemId);
+
     	$.ajax({
     		url: "/api/item/" + itemId,
     		method :"GET",
@@ -161,16 +165,19 @@
     		                            	"swipeleft": swipeImageLeft,
     		                            	"swiperight": swipeImageRight
     		                            });
-    		                            swipeImageLeft();    		                            
-
-    		            				detail.find(".article .content .wrap .wrap").on("click", function(){
-    		            					var article = $(this).parents(".article");
-    		            					article.toggleClass("more");
-    		            				});
-    		                            
-    		                            $("article#main").addClass("detail");
-    		            		    	$("article#main .wrap").append(detail);
+    		                            swipeImageLeft();
     		                        }
+    		                        else {
+    		                        	imgPage.remove();
+    		                        }
+
+		            				detail.find(".article .content .wrap .wrap").on("click", function(){
+		            					var article = $(this).parents(".article");
+		            					article.toggleClass("more");
+		            				});
+		                            
+		                            $("article#main").addClass("detail");
+		            		    	$("article#main .wrap").append(detail);
     		                    });
     			            }
     			        });
