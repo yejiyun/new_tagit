@@ -86,8 +86,11 @@
     	var itemId = $(this).attr("data-id");
     	
     	var detail = _global.modules.detail.init();
+    	
+    	detail.attr("scroll_top", $(window).scrollTop());
     	detail.find(".header .btn_back").click(function() {
         	$("article#main").removeClass("detail");
+        	$(window).scrollTop(detail.attr("scroll_top"));
         	detail.remove();
         });
     	
@@ -163,7 +166,10 @@
     		                            	"swiperight": swipeImageRight
     		                            });
     		                            swipeImageLeft();
-    		                        }    		                            
+    		                        }
+    		                        else {
+    		                        	imgPage.remove();
+    		                        }
 
 		            				detail.find(".article .content .wrap .wrap").on("click", function(){
 		            					var article = $(this).parents(".article");
