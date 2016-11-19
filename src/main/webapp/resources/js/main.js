@@ -92,6 +92,7 @@
         });
     	
     	detail.attr("data-id", itemId);
+
     	$.ajax({
     		url: "/api/item/" + itemId,
     		method :"GET",
@@ -161,16 +162,16 @@
     		                            	"swipeleft": swipeImageLeft,
     		                            	"swiperight": swipeImageRight
     		                            });
-    		                            swipeImageLeft();    		                            
+    		                            swipeImageLeft();
+    		                        }    		                            
 
-    		            				detail.find(".article .content .wrap .wrap").on("click", function(){
-    		            					var article = $(this).parents(".article");
-    		            					article.toggleClass("more");
-    		            				});
-    		                            
-    		                            $("article#main").addClass("detail");
-    		            		    	$("article#main .wrap").append(detail);
-    		                        }
+		            				detail.find(".article .content .wrap .wrap").on("click", function(){
+		            					var article = $(this).parents(".article");
+		            					article.toggleClass("more");
+		            				});
+		                            
+		                            $("article#main").addClass("detail");
+		            		    	$("article#main .wrap").append(detail);
     		                    });
     			            }
     			        });
