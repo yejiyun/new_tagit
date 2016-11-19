@@ -25,8 +25,9 @@ public class ItemService {
 	public List<ItemTag> getItemTagByTagId(List<TagModel> list){
 		List<Integer> idList = new ArrayList<Integer>();
 	
-		for(TagModel tm : list){	
+		for(TagModel tm : list){
 		  idList.add(tm.getId());
+		  
 		}
 		System.out.println(idList.toString());
 		return itemMapper.selectByItemTagId(idList);
