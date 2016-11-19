@@ -49,9 +49,11 @@ $(function(){
 	
 	function divDetail() {
     	$("header#header").removeClass("open");
+    	var itemId = $(this).parents(".card").attr("data-id");
     	
     	var detail = _global.modules.detail.init();
     	detail.find(".header .btn_back").click(function() {
+        	$("article#list").removeClass("detail");
         	detail.remove();
         });
     	
@@ -132,6 +134,8 @@ $(function(){
     		            					article.toggleClass("more");
     		            				});
     		                            
+    		                            $("article#list").addClass("detail");
+    		            		    	$("article#list").append(detail);
     		                        }
     		                    });
     			            }
@@ -189,38 +193,7 @@ $(function(){
 	
 	$(document).on("click", "article#list .cards .card .detail", addData);
 
-	$(document).on("click", "aside#detail_edit .footer .btn_apply", function(){
-			var aside = _global.modules.aside.init();
-	        var id = $('div[data-id]').attr('data-id');
-	        var tags = [];
-	        var memo = $('textarea').val();
-	        //aside.find(".tokenizer li span.label").each(function(){ tags.push($(this).text()); });
-        	$('.tokenizer li span.label').each(function(){ tags.push($(this).text()); });
-	        var data = {
-	        		memo: memo,	
-	        		tags: tags.join(","),
-	        		id : id,
-	        		
-        	}
-        	console.log(data);
-        	
-        	$.ajax({
-        		url: "/api/item/update",
-        		method :"POST",
-        		data : data,
-        		success : function(response) {
-        			if(response.state) {
-	        			$("aside").removeClass("show");
-	        		}
-	        		
-	        		
-        		}
-			});
-			
-			
-        	
-	        
-	});
-	
 
+    $(document).on("click", "article#list .cards .card .tap_holder", divDetail);
+	
 });
