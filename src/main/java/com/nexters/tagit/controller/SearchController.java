@@ -41,13 +41,17 @@ public class SearchController {
 	@Autowired TagMapper tagMapper;
 	@Autowired ItemMapper itemMapper;
 	
-	@RequestMapping(value = "/{keyword}/api", method = RequestMethod.GET)
+	@RequestMapping(value = "/{keyword}", method = RequestMethod.GET)
 	public ModelAndView search(
 			@PathVariable String keyword,HttpSession session) throws JsonProcessingException {
+		UserModel user = (UserModel)session.getAttribute("session");
+		if(user==null){
+			ModelAndView mav = new ModelAndView("login");
+			return mav;
+		}
 		ModelAndView mav = new ModelAndView("tiles/list");
 		ObjectMapper objectMapper = new ObjectMapper();
 		System.out.println(keyword);
-		UserModel user = (UserModel)session.getAttribute("session");
 		searchService.checkUp(keyword,user.getUser_id());
 		List<ItemTag> itemTag = itemService.getItemTagByTagId(tagService.selectByContentList(keyword));
 		List<ItemModel> itemList = new ArrayList<ItemModel>();

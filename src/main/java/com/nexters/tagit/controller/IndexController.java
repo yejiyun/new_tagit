@@ -65,6 +65,9 @@ public class IndexController {
 			model.addAttribute("recentSearch", searchMapper.selectUserSearch(user.getUser_id()));
 			model.addAttribute("tagBundles", tagBundles);
 		}
+		else{
+			return "login";
+		}
 		return "tiles/main";
 	}
 	

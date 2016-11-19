@@ -19,7 +19,7 @@
 		
 		$("#search").click(function(){
 			if($("#header").hasClass("open")){
-				location.href = "/search/"+$(".span4").val()+"/api";
+				location.href = "/search/"+$(".span4").val();
 			}
 			$("#header").toggleClass("open");
 			
