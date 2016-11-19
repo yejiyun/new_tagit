@@ -239,9 +239,12 @@ public class ItemApiController {
 				
 				for(UserTagModel userTag : userTagList){
 					HashMap<String, Object> tag = new HashMap<>();
-					tag.put("name", tagMapper.selectContent(userTag.getTag_id()));
-					tag.put("list", itemMapper.selectByItemTag(userTag.getTag_id()));
-					tagBundles.add(tag);
+					List<ItemModel> it = itemMapper.selectByItemTag(userTag.getTag_id());
+					if(it.size()>0){
+						tag.put("name", tagMapper.selectContent(userTag.getTag_id()));
+						tag.put("list", it);
+						tagBundles.add(tag);
+					}
 				}
 				
 				responseMap.put("data", tagBundles);
