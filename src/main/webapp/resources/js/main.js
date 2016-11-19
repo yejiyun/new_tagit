@@ -76,7 +76,7 @@
     });
     
     $(document).on("click", ".tag_bundle header", function(){
-    	location.href = "/search/" + $(this).find("span").text() + "/api";
+    	location.href = "/search/" + $(this).find("span").text();
     });
     $(".fixed_header #get").on("click", asideGet);
     $(document).on("click", ".items .item", divDetail);
