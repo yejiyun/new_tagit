@@ -45,9 +45,11 @@ $(function(){
 	
 	function divDetail() {
     	$("header#header").removeClass("open");
+    	var itemId = $(this).parents(".card").attr("data-id");
     	
     	var detail = _global.modules.detail.init();
     	detail.find(".header .btn_back").click(function() {
+        	$("article#list").removeClass("detail");
         	detail.remove();
         });
     	
@@ -128,6 +130,8 @@ $(function(){
     		            					article.toggleClass("more");
     		            				});
     		                            
+    		                            $("article#list").addClass("detail");
+    		            		    	$("article#list").append(detail);
     		                        }
     		                    });
     			            }
@@ -183,6 +187,7 @@ $(function(){
 	}
 	
 	$(document).on("click", "article#list .cards .card .detail", addData);
-	
 
+    $(document).on("click", "article#list .cards .card .tap_holder", divDetail);
+	
 });
