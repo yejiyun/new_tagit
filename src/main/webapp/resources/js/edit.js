@@ -118,8 +118,9 @@ $(function() {
 							$(this).parent().remove();
 						});
 						aside.find(".txt_memo").val("");
+					} else {
+						return false;
 					}
-					return false;
 				}
 
 				if (!data.picture)
